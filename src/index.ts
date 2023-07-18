@@ -11,4 +11,6 @@ export {
   convertToKebabCase,
   toCamelCase,
   toPascalCase,
+  gravatarIconUrl,
+  toGraphqlQuery,
 } from './lib'

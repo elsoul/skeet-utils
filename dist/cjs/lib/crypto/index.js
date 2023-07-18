@@ -16,4 +16,5 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./base64"), exports);
 __exportStar(require("./crypto"), exports);
+__exportStar(require("./placeholder"), exports);
 //# sourceMappingURL=index.js.map
