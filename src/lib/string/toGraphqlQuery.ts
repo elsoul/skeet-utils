@@ -1,7 +1,17 @@
 type QueryType = 'query' | 'mutation'
 
 export const toGraphqlQuery = <
-  T extends { [key: string]: string | number | boolean },
+  T extends {
+    [key: string]:
+      | string
+      | number
+      | boolean
+      | undefined
+      | null
+      | string[]
+      | number[]
+      | boolean[]
+  },
 >(
   queryType: QueryType,
   queryName: string,
@@ -9,11 +19,15 @@ export const toGraphqlQuery = <
 ) => {
   try {
     const inputString = Object.entries(query)
-      .map(([key, value]) =>
-        typeof value === 'number' || typeof value === 'boolean'
-          ? `${key}: ${value}`
-          : `${key}: \"${value.toString()}\"`,
-      )
+      .map(([key, value]) => {
+        if (value === undefined || value === null) {
+          return `${key}: \"\"` // Convert undefined or null to an empty string
+        } else if (typeof value === 'number' || typeof value === 'boolean') {
+          return `${key}: ${value}`
+        } else {
+          return `${key}: \"${value}\"`
+        }
+      })
       .join(', ')
 
     const body = JSON.stringify({
