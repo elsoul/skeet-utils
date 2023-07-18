@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toPascalCase = exports.toCamelCase = exports.convertToKebabCase = exports.convertFromKebabCaseToLowerCase = exports.generateIv = exports.decrypt = exports.encrypt = exports.sendDiscord = exports.encodeBase64 = exports.sleep = exports.getTimestamp = void 0;
+exports.toPascalCase = exports.toCamelCase = exports.convertToKebabCase = exports.convertFromKebabCaseToLowerCase = exports.generateIv = exports.decrypt = exports.encrypt = exports.sendDiscord = exports.decodeBase64 = exports.encodeBase64 = exports.sleep = exports.utcNow = void 0;
 var lib_1 = require("./lib");
-Object.defineProperty(exports, "getTimestamp", { enumerable: true, get: function () { return lib_1.getTimestamp; } });
+Object.defineProperty(exports, "utcNow", { enumerable: true, get: function () { return lib_1.utcNow; } });
 Object.defineProperty(exports, "sleep", { enumerable: true, get: function () { return lib_1.sleep; } });
 Object.defineProperty(exports, "encodeBase64", { enumerable: true, get: function () { return lib_1.encodeBase64; } });
+Object.defineProperty(exports, "decodeBase64", { enumerable: true, get: function () { return lib_1.decodeBase64; } });
 Object.defineProperty(exports, "sendDiscord", { enumerable: true, get: function () { return lib_1.sendDiscord; } });
 Object.defineProperty(exports, "encrypt", { enumerable: true, get: function () { return lib_1.encrypt; } });
 Object.defineProperty(exports, "decrypt", { enumerable: true, get: function () { return lib_1.decrypt; } });

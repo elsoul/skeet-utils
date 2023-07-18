@@ -1,7 +1,8 @@
 export {
-  getTimestamp,
+  utcNow,
   sleep,
   encodeBase64,
+  decodeBase64,
   sendDiscord,
   encrypt,
   decrypt,
