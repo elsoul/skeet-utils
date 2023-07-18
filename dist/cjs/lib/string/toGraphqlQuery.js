@@ -16,12 +16,11 @@ const toGraphqlQuery = (queryType, queryName, query) => {
             }
         })
             .join(', ');
-        const body = JSON.stringify({
+        const graphqlQuery = JSON.stringify({
             query: `${queryType} { ${queryName}(input: { ${inputString} }) { response }}`,
             variables: {},
         });
-        const graphQlBuffer = Buffer.from(body);
-        return graphQlBuffer;
+        return graphqlQuery;
     }
     catch (error) {
         throw new Error(`Error in toGraphqlQuery: ${error}`);

@@ -1,18 +1,29 @@
 import { v2beta3 } from '@google-cloud/tasks';
-const MAX_SCHEDULE_LIMIT = 30 * 60 * 60 * 24; // Represents 30 days in seconds.
-export const createHttpTaskWithToken = async (projectId = 'my-project-id', queue = 'my-queue', location = 'us-central1', url = 'https://example.com/taskhandler', email = '<member>@<project-id>.iam.gserviceaccount.com', payload = 'Hello, World!', date = new Date()) => {
+import * as dotenv from 'dotenv';
+dotenv.config();
+export const createHttpTaskWithToken = async (queue = 'my-queue', payload, inSeconds = 0, skeetOptions) => {
+    const { projectId, region, lbDomain } = skeetOptions;
+    let url = '';
+    let oidcToken = {};
+    if (process.env.NODE_ENV === 'development') {
+        url = `http://localhost:3000/graphql`;
+    }
+    else {
+        const serviceAccountEmail = `${projectId}@${projectId}.iam.gserviceaccount.com`;
+        url = `https://${lbDomain}/graphql`;
+        oidcToken = {
+            serviceAccountEmail,
+        };
+    }
     const client = new v2beta3.CloudTasksClient();
-    const parent = client.queuePath(projectId, location, queue);
+    const parent = client.queuePath(projectId, region, queue);
     const convertedPayload = JSON.stringify(payload);
     const body = Buffer.from(convertedPayload).toString('base64');
     const task = {
         httpRequest: {
             httpMethod: 'POST',
             url,
-            oidcToken: {
-                serviceAccountEmail: email,
-                audience: url,
-            },
+            oidcToken,
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -20,22 +31,9 @@ export const createHttpTaskWithToken = async (projectId = 'my-project-id', queue
         },
         scheduleTime: {},
     };
-    const convertedDate = new Date(date);
-    const currentDate = new Date();
-    // Schedule time can not be in the past.
-    if (convertedDate < currentDate) {
-        throw new Error('Scheduled date in the past.');
-    }
-    else if (convertedDate > currentDate) {
-        const date_diff_in_seconds = (convertedDate.getTime() - currentDate.getTime()) / 1000;
-        // Restrict schedule time to the 30 day maximum.
-        if (date_diff_in_seconds > MAX_SCHEDULE_LIMIT) {
-            throw new Error('Schedule time is over 30 day maximum.');
-        }
-        // Construct future date in Unix time.
-        const date_in_seconds = Math.min(date_diff_in_seconds, MAX_SCHEDULE_LIMIT) + Date.now() / 1000;
+    if (inSeconds) {
         task.scheduleTime = {
-            seconds: date_in_seconds,
+            seconds: parseInt(String(inSeconds)) + Date.now() / 1000,
         };
     }
     try {

@@ -1,1 +1,10 @@
-export declare const createHttpTaskWithToken: (projectId?: string, queue?: string, location?: string, url?: string, email?: string, payload?: string, date?: Date) => Promise<string | null | undefined>;
+type SkeetOptions = {
+    name: string;
+    projectId: string;
+    region: string;
+    appDomain: string;
+    lbDomain: string;
+    nsDomain: string;
+};
+export declare const createHttpTaskWithToken: (queue: string | undefined, payload: string, inSeconds: number | undefined, skeetOptions: SkeetOptions) => Promise<string | null | undefined>;
+export {};
