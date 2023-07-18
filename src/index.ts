@@ -12,5 +12,4 @@ export {
   toCamelCase,
   toPascalCase,
   gravatarIconUrl,
-  toGraphqlQuery,
 } from './lib'

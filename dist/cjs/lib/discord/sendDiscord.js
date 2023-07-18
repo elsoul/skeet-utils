@@ -17,9 +17,13 @@ const sendDiscord = async (content, webhookUrl) => {
             headers: { 'Content-Type': 'application/json' },
         });
         console.log(`Discord result status: ${res.status}`);
+        if (res.status !== 204)
+            return false;
+        return true;
     }
     catch (e) {
         console.log({ error: `Skeet sendDiscord Error - ${content}` });
+        return false;
     }
 };
 exports.sendDiscord = sendDiscord;
