@@ -1,0 +1,1 @@
+export declare const createHttpTaskWithToken: (projectId?: string, queue?: string, location?: string, url?: string, email?: string, payload?: string, date?: Date) => Promise<string | null | undefined>;

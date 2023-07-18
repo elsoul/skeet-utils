@@ -12,7 +12,7 @@ const toGraphqlQuery = (queryType, queryName, query) => {
                 return `${key}: ${value}`;
             }
             else {
-                return `${key}: \"${value}\"`;
+                return `${key}: "${value}"`;
             }
         })
             .join(', ');
@@ -20,7 +20,8 @@ const toGraphqlQuery = (queryType, queryName, query) => {
             query: `${queryType} { ${queryName}(input: { ${inputString} }) { response }}`,
             variables: {},
         });
-        return body;
+        const graphQlBuffer = Buffer.from(body);
+        return graphQlBuffer;
     }
     catch (error) {
         throw new Error(`Error in toGraphqlQuery: ${error}`);
