@@ -1,6 +1,6 @@
 import { createHash } from 'crypto'
 
-export const gravatarIconUrl = async (email: string) => {
+export const gravatarIconUrl = (email: string) => {
   try {
     const md5Hash = createHash('md5')
     const trimmedEmail = email.trim().toLowerCase()
@@ -9,5 +9,4 @@ export const gravatarIconUrl = async (email: string) => {
   } catch (error) {
     throw new Error(`gravatarIconUrl: ${error}`)
   }
-
 }

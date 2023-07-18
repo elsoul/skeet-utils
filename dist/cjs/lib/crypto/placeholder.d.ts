@@ -1,1 +1,1 @@
-export declare const gravatarIconUrl: (email: string) => Promise<string>;
+export declare const gravatarIconUrl: (email: string) => string;
