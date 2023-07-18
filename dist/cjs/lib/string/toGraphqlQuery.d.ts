@@ -1,6 +1,5 @@
 type QueryType = 'query' | 'mutation';
-type Query = {
+export declare const toGraphqlQuery: <T extends {
     [key: string]: string | number | boolean;
-};
-export declare const toGraphqlQuery: (queryType: QueryType, queryName: string, query: Query) => string;
+}>(queryType: QueryType, queryName: string, query: T) => string;
 export {};

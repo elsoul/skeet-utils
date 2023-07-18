@@ -1,18 +1,21 @@
 type QueryType = 'query' | 'mutation'
 
-type Query = { [key: string]: string | number | boolean }
-
-export const toGraphqlQuery = (
+export const toGraphqlQuery = <
+  T extends { [key: string]: string | number | boolean },
+>(
   queryType: QueryType,
   queryName: string,
-  query: Query,
+  query: T,
 ) => {
   try {
-    const inputString = Object.entries(query).map(([key, value]) =>
-      typeof value === 'number' || typeof value === 'boolean'
-        ? `${key}: ${value}`
-        : `${key}: \"${value.toString()}\"`,
-    )
+    const inputString = Object.entries(query)
+      .map(([key, value]) =>
+        typeof value === 'number' || typeof value === 'boolean'
+          ? `${key}: ${value}`
+          : `${key}: \"${value.toString()}\"`,
+      )
+      .join(', ')
+
     const body = JSON.stringify({
       query: `${queryType} { ${queryName}(input: { ${inputString} }) { response }}`,
       variables: {},
