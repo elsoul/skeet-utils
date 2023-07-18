@@ -2,15 +2,7 @@ type QueryType = 'query' | 'mutation'
 
 export const toGraphqlQuery = <
   T extends {
-    [key: string]:
-      | string
-      | number
-      | boolean
-      | undefined
-      | null
-      | string[]
-      | number[]
-      | boolean[]
+    [key: string]: any
   },
 >(
   queryType: QueryType,
