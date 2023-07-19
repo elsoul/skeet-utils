@@ -12,6 +12,7 @@ export {
   toCamelCase,
   toPascalCase,
   toGraphqlQuery,
+  toPrismaId,
   gravatarIconUrl,
   createHttpTaskWithToken,
   createCloudTask,

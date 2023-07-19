@@ -16,4 +16,5 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./string"), exports);
 __exportStar(require("./toGraphqlQuery"), exports);
+__exportStar(require("./toPrismaId"), exports);
 //# sourceMappingURL=index.js.map
