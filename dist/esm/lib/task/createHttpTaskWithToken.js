@@ -1,43 +1,34 @@
 import { v2beta3 } from '@google-cloud/tasks';
 import * as dotenv from 'dotenv';
 dotenv.config();
-export const createHttpTaskWithToken = async (queue = 'my-queue', payload, inSeconds = 0, skeetOptions) => {
-    const { projectId, region, lbDomain } = skeetOptions;
-    let url = '';
-    let oidcToken = {};
-    if (process.env.NODE_ENV === 'development') {
-        url = `http://localhost:3000/graphql`;
-    }
-    else {
+export const createHttpTaskWithToken = async (skeetOptions, queue = 'my-queue', graphqlQuery, inSeconds = 0) => {
+    try {
+        const { projectId, region, lbDomain } = skeetOptions;
+        const client = new v2beta3.CloudTasksClient();
+        const parent = client.queuePath(projectId, region, queue);
+        const body = Buffer.from(JSON.stringify(graphqlQuery)).toString('base64');
         const serviceAccountEmail = `${projectId}@${projectId}.iam.gserviceaccount.com`;
-        url = `https://${lbDomain}/graphql`;
-        oidcToken = {
+        const url = `https://${lbDomain}/graphql`;
+        const oidcToken = {
             serviceAccountEmail,
         };
-    }
-    const client = new v2beta3.CloudTasksClient();
-    const parent = client.queuePath(projectId, region, queue);
-    const convertedPayload = JSON.stringify(payload);
-    const body = Buffer.from(convertedPayload).toString('base64');
-    const task = {
-        httpRequest: {
-            httpMethod: 'POST',
-            url,
-            oidcToken,
-            headers: {
-                'Content-Type': 'application/json',
+        const task = {
+            httpRequest: {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                httpMethod: 'POST',
+                url,
+                oidcToken,
+                body,
             },
-            body,
-        },
-        scheduleTime: {},
-    };
-    if (inSeconds) {
-        task.scheduleTime = {
-            seconds: parseInt(String(inSeconds)) + Date.now() / 1000,
+            scheduleTime: {},
         };
-    }
-    try {
-        // Send create task request.
+        if (inSeconds) {
+            task.scheduleTime = {
+                seconds: parseInt(String(inSeconds)) + Date.now() / 1000,
+            };
+        }
         const request = { parent, task };
         const [response] = await client.createTask(request);
         console.log(`Created task ${response.name}`);

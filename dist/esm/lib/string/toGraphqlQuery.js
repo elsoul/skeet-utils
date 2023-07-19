@@ -14,7 +14,7 @@ export const toGraphqlQuery = (queryType, queryName, query) => {
         })
             .join(', ');
         const graphqlQuery = JSON.stringify({
-            query: `${queryType} { ${queryName}(input: { ${inputString} }) { response }}`,
+            query: `${queryType} { ${queryName}({ ${inputString} }) { id }}`,
             variables: {},
         });
         return graphqlQuery;

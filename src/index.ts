@@ -14,4 +14,6 @@ export {
   toGraphqlQuery,
   gravatarIconUrl,
   createHttpTaskWithToken,
+  createCloudTask,
+  sendGraphqlRequest,
 } from './lib'

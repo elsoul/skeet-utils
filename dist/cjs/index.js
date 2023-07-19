@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createHttpTaskWithToken = exports.gravatarIconUrl = exports.toGraphqlQuery = exports.toPascalCase = exports.toCamelCase = exports.convertToKebabCase = exports.convertFromKebabCaseToLowerCase = exports.generateIv = exports.decrypt = exports.encrypt = exports.sendDiscord = exports.decodeBase64 = exports.encodeBase64 = exports.sleep = exports.utcNow = void 0;
+exports.sendGraphqlRequest = exports.createCloudTask = exports.createHttpTaskWithToken = exports.gravatarIconUrl = exports.toGraphqlQuery = exports.toPascalCase = exports.toCamelCase = exports.convertToKebabCase = exports.convertFromKebabCaseToLowerCase = exports.generateIv = exports.decrypt = exports.encrypt = exports.sendDiscord = exports.decodeBase64 = exports.encodeBase64 = exports.sleep = exports.utcNow = void 0;
 var lib_1 = require("./lib");
 Object.defineProperty(exports, "utcNow", { enumerable: true, get: function () { return lib_1.utcNow; } });
 Object.defineProperty(exports, "sleep", { enumerable: true, get: function () { return lib_1.sleep; } });
@@ -17,4 +17,6 @@ Object.defineProperty(exports, "toPascalCase", { enumerable: true, get: function
 Object.defineProperty(exports, "toGraphqlQuery", { enumerable: true, get: function () { return lib_1.toGraphqlQuery; } });
 Object.defineProperty(exports, "gravatarIconUrl", { enumerable: true, get: function () { return lib_1.gravatarIconUrl; } });
 Object.defineProperty(exports, "createHttpTaskWithToken", { enumerable: true, get: function () { return lib_1.createHttpTaskWithToken; } });
+Object.defineProperty(exports, "createCloudTask", { enumerable: true, get: function () { return lib_1.createCloudTask; } });
+Object.defineProperty(exports, "sendGraphqlRequest", { enumerable: true, get: function () { return lib_1.sendGraphqlRequest; } });
 //# sourceMappingURL=index.js.map

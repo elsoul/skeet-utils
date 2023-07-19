@@ -1,4 +1,4 @@
-type SkeetOptions = {
+export type SkeetOptions = {
     name: string;
     projectId: string;
     region: string;
@@ -6,5 +6,4 @@ type SkeetOptions = {
     lbDomain: string;
     nsDomain: string;
 };
-export declare const createHttpTaskWithToken: (queue: string | undefined, payload: string, inSeconds: number | undefined, skeetOptions: SkeetOptions) => Promise<string | null | undefined>;
-export {};
+export declare const createHttpTaskWithToken: <T>(skeetOptions: SkeetOptions, queue: string | undefined, graphqlQuery: T, inSeconds?: number) => Promise<string | null | undefined>;
