@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toCamelCase = exports.toPascalCase = exports.convertFromKebabCaseToLowerCase = exports.convertToKebabCase = void 0;
+exports.toLowerCase = exports.toUpperCase = exports.toCamelCase = exports.toPascalCase = exports.convertFromKebabCaseToLowerCase = exports.convertToKebabCase = void 0;
 const convertToKebabCase = (str) => {
     return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 };
@@ -28,4 +28,12 @@ const toCamelCase = (str) => {
         .join('');
 };
 exports.toCamelCase = toCamelCase;
+const toUpperCase = async (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+};
+exports.toUpperCase = toUpperCase;
+const toLowerCase = async (str) => {
+    return str.charAt(0).toLowerCase() + str.slice(1);
+};
+exports.toLowerCase = toLowerCase;
 //# sourceMappingURL=string.js.map

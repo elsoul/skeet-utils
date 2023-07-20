@@ -1,6 +1,6 @@
 {
   "name": "@skeet-framework/utils",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Skeet Framework Plugin - Utils",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -39,7 +39,7 @@
     "date-fns": "2.30.0",
     "date-fns-tz": "2.0.0",
     "dotenv": "16.3.1",
-    "graphql-relay": "^0.10.0",
+    "graphql-relay": "0.10.0",
     "node-fetch": "2.6.9"
   },
   "devDependencies": {

@@ -21,4 +21,10 @@ export const toCamelCase = (str) => {
     })
         .join('');
 };
+export const toUpperCase = async (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+};
+export const toLowerCase = async (str) => {
+    return str.charAt(0).toLowerCase() + str.slice(1);
+};
 //# sourceMappingURL=string.js.map

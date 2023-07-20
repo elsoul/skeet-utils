@@ -13,8 +13,17 @@ export {
   toPascalCase,
   toGraphqlQuery,
   toPrismaId,
+  toLowerCase,
+  toUpperCase,
   gravatarIconUrl,
   createHttpTaskWithToken,
   createCloudTask,
   sendGraphqlRequest,
 } from './lib'
+
+export {
+  connectionFromArray,
+  connectionFromPromisedArray,
+  fromGlobalId,
+  toGlobalId,
+} from 'graphql-relay'
