@@ -14,7 +14,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./createHttpTaskWithToken"), exports);
+__exportStar(require("./createGraphqlTask"), exports);
 __exportStar(require("./createCloudTask"), exports);
 __exportStar(require("./sendGraphqlRequest"), exports);
 //# sourceMappingURL=index.js.map

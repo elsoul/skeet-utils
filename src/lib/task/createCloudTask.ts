@@ -1,7 +1,4 @@
-import {
-  SkeetOptions,
-  createHttpTaskWithToken,
-} from './createHttpTaskWithToken'
+import { SkeetOptions, createGraphqlTask } from './createGraphqlTask'
 import { sendGraphqlRequest } from './sendGraphqlRequest'
 
 export const createCloudTask = async <
@@ -10,19 +7,19 @@ export const createCloudTask = async <
   },
 >(
   skeetOptions: SkeetOptions,
-  queue = 'my-queue',
-  graphqlQuery: T,
+  queryName: string,
+  params: T,
   inSeconds = 0,
 ) => {
   try {
     if (process.env.NODE_ENV !== 'production') {
-      const result = await sendGraphqlRequest('mutation', queue, graphqlQuery)
+      const result = await sendGraphqlRequest('mutation', queryName, params)
       return result
     } else {
-      const result = await createHttpTaskWithToken(
+      const result = await createGraphqlTask(
         skeetOptions,
-        queue,
-        graphqlQuery,
+        queryName,
+        params,
         inSeconds,
       )
       return result

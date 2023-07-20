@@ -3,11 +3,27 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendGraphqlRequest = void 0;
+exports.graphqlString = exports.sendGraphqlRequest = void 0;
 const node_fetch_1 = __importDefault(require("node-fetch"));
-const sendGraphqlRequest = async (queryType, queryName, query) => {
+const sendGraphqlRequest = async (queryType, queryName, params) => {
     try {
-        const inputString = Object.entries(query)
+        const body = (0, exports.graphqlString)(queryType, queryName, params);
+        const baseUrl = 'http://localhost:3000/graphql';
+        const res = await (0, node_fetch_1.default)(baseUrl, {
+            method: 'POST',
+            body,
+            headers: { 'Content-Type': 'application/json' },
+        });
+        return res;
+    }
+    catch (error) {
+        throw new Error(`sendGraphqlRequest failed: ${error}`);
+    }
+};
+exports.sendGraphqlRequest = sendGraphqlRequest;
+const graphqlString = (queryType, queryName, params) => {
+    try {
+        const inputString = Object.entries(params)
             .map(([key, value]) => {
             if (value === undefined || value === null) {
                 return `${key}: ""`;
@@ -24,17 +40,11 @@ const sendGraphqlRequest = async (queryType, queryName, query) => {
             query: `${queryType} { ${queryName}(${inputString}) { id } }`,
             variables: {},
         });
-        const baseUrl = 'http://localhost:3000/graphql';
-        const res = await (0, node_fetch_1.default)(baseUrl, {
-            method: 'POST',
-            body: graphql,
-            headers: { 'Content-Type': 'application/json' },
-        });
-        return res;
+        return graphql;
     }
     catch (error) {
-        throw new Error(`sendGraphqlRequest failed: ${error}`);
+        throw new Error(`graphqlString failed: ${error}`);
     }
 };
-exports.sendGraphqlRequest = sendGraphqlRequest;
+exports.graphqlString = graphqlString;
 //# sourceMappingURL=sendGraphqlRequest.js.map

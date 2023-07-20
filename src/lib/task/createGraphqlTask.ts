@@ -1,5 +1,6 @@
 import { v2beta3 } from '@google-cloud/tasks'
 import * as dotenv from 'dotenv'
+import { graphqlString } from './sendGraphqlRequest'
 
 dotenv.config()
 export type SkeetOptions = {
@@ -11,19 +12,18 @@ export type SkeetOptions = {
   nsDomain: string
 }
 
-export const createHttpTaskWithToken = async <T>(
+export const createGraphqlTask = async <T extends Record<string, any>>(
   skeetOptions: SkeetOptions,
-  queue = 'my-queue',
-  graphqlQuery: T,
+  queryName: string,
+  params: T,
   inSeconds = 0,
 ) => {
   try {
     const { projectId, region, lbDomain } = skeetOptions
     const client = new v2beta3.CloudTasksClient()
-    const parent = client.queuePath(projectId, region, queue)
-    const body: string = Buffer.from(JSON.stringify(graphqlQuery)).toString(
-      'base64',
-    )
+    const parent = client.queuePath(projectId, region, queryName)
+    const graphql = graphqlString('mutation', queryName, params)
+    const body: string = Buffer.from(graphql).toString('base64')
     const serviceAccountEmail = `${projectId}@${projectId}.iam.gserviceaccount.com`
     const url = `https://${lbDomain}/graphql`
     const oidcToken = {
@@ -51,6 +51,6 @@ export const createHttpTaskWithToken = async <T>(
     console.log(`Created task ${response.name}`)
     return response.name
   } catch (error) {
-    throw new Error(`createHttpTaskWithToken: ${error}`)
+    throw new Error(`createGraphqlTask: ${error}`)
   }
 }

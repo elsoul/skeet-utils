@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toGlobalId = exports.fromGlobalId = exports.connectionFromPromisedArray = exports.connectionFromArray = exports.sendGraphqlRequest = exports.createCloudTask = exports.createHttpTaskWithToken = exports.gravatarIconUrl = exports.toUpperCase = exports.toLowerCase = exports.toPrismaId = exports.toGraphqlQuery = exports.toPascalCase = exports.toCamelCase = exports.convertToKebabCase = exports.convertFromKebabCaseToLowerCase = exports.generateIv = exports.decrypt = exports.encrypt = exports.sendDiscord = exports.decodeBase64 = exports.encodeBase64 = exports.sleep = exports.utcNow = void 0;
+exports.toGlobalId = exports.fromGlobalId = exports.connectionFromPromisedArray = exports.connectionFromArray = exports.sendGraphqlRequest = exports.createCloudTask = exports.createGraphqlTask = exports.gravatarIconUrl = exports.toUpperCase = exports.toLowerCase = exports.toPrismaId = exports.toGraphqlQuery = exports.toPascalCase = exports.toCamelCase = exports.convertToKebabCase = exports.convertFromKebabCaseToLowerCase = exports.generateIv = exports.decrypt = exports.encrypt = exports.sendDiscord = exports.decodeBase64 = exports.encodeBase64 = exports.sleep = exports.utcNow = void 0;
 var lib_1 = require("./lib");
 Object.defineProperty(exports, "utcNow", { enumerable: true, get: function () { return lib_1.utcNow; } });
 Object.defineProperty(exports, "sleep", { enumerable: true, get: function () { return lib_1.sleep; } });
@@ -19,7 +19,7 @@ Object.defineProperty(exports, "toPrismaId", { enumerable: true, get: function (
 Object.defineProperty(exports, "toLowerCase", { enumerable: true, get: function () { return lib_1.toLowerCase; } });
 Object.defineProperty(exports, "toUpperCase", { enumerable: true, get: function () { return lib_1.toUpperCase; } });
 Object.defineProperty(exports, "gravatarIconUrl", { enumerable: true, get: function () { return lib_1.gravatarIconUrl; } });
-Object.defineProperty(exports, "createHttpTaskWithToken", { enumerable: true, get: function () { return lib_1.createHttpTaskWithToken; } });
+Object.defineProperty(exports, "createGraphqlTask", { enumerable: true, get: function () { return lib_1.createGraphqlTask; } });
 Object.defineProperty(exports, "createCloudTask", { enumerable: true, get: function () { return lib_1.createCloudTask; } });
 Object.defineProperty(exports, "sendGraphqlRequest", { enumerable: true, get: function () { return lib_1.sendGraphqlRequest; } });
 var graphql_relay_1 = require("graphql-relay");

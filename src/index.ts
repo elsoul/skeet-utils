@@ -16,7 +16,7 @@ export {
   toLowerCase,
   toUpperCase,
   gravatarIconUrl,
-  createHttpTaskWithToken,
+  createGraphqlTask,
   createCloudTask,
   sendGraphqlRequest,
 } from './lib'

@@ -1,12 +1,14 @@
 import { v2beta3 } from '@google-cloud/tasks';
 import * as dotenv from 'dotenv';
+import { graphqlString } from './sendGraphqlRequest';
 dotenv.config();
-export const createGraphqlTask = async (skeetOptions, queue = 'my-queue', graphqlQuery, inSeconds = 0) => {
+export const createGraphqlTask = async (skeetOptions, queryName, params, inSeconds = 0) => {
     try {
         const { projectId, region, lbDomain } = skeetOptions;
         const client = new v2beta3.CloudTasksClient();
-        const parent = client.queuePath(projectId, region, queue);
-        const body = Buffer.from(JSON.stringify(graphqlQuery)).toString('base64');
+        const parent = client.queuePath(projectId, region, queryName);
+        const graphql = graphqlString('mutation', queryName, params);
+        const body = Buffer.from(graphql).toString('base64');
         const serviceAccountEmail = `${projectId}@${projectId}.iam.gserviceaccount.com`;
         const url = `https://${lbDomain}/graphql`;
         const oidcToken = {

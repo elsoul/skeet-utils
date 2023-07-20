@@ -17,7 +17,7 @@
 <h1>Function createCloudTask</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="createCloudTask"><span class="tsd-kind-call-signature">create<wbr/>Cloud<wbr/>Task</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">skeetOptions</span>, <span class="tsd-kind-parameter">queue</span><span class="tsd-signature-symbol">?</span>, <span class="tsd-kind-parameter">graphqlQuery</span>, <span class="tsd-kind-parameter">inSeconds</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Response</span><span class="tsd-signature-symbol">&gt;</span><a href="#createCloudTask" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="createCloudTask"><span class="tsd-kind-call-signature">create<wbr/>Cloud<wbr/>Task</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">skeetOptions</span>, <span class="tsd-kind-parameter">queryName</span>, <span class="tsd-kind-parameter">params</span>, <span class="tsd-kind-parameter">inSeconds</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Response</span><span class="tsd-signature-symbol">&gt;</span><a href="#createCloudTask" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
 <section class="tsd-panel">
 <h4>Type Parameters</h4>
@@ -30,14 +30,14 @@
 <li>
 <h5><span class="tsd-kind-parameter">skeetOptions</span>: <span class="tsd-signature-type ">SkeetOptions</span></h5></li>
 <li>
-<h5><span class="tsd-kind-parameter">queue</span>: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#39;my-queue&#39;</span></h5></li>
+<h5><span class="tsd-kind-parameter">queryName</span>: <span class="tsd-signature-type">string</span></h5></li>
 <li>
-<h5><span class="tsd-kind-parameter">graphqlQuery</span>: <span class="tsd-signature-type tsd-kind-type-parameter">T</span></h5></li>
+<h5><span class="tsd-kind-parameter">params</span>: <span class="tsd-signature-type tsd-kind-type-parameter">T</span></h5></li>
 <li>
 <h5><span class="tsd-kind-parameter">inSeconds</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Response</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/elsoul/skeet-utils/blob/55f3a6e/src/lib/task/createCloudTask.ts#L7">src/lib/task/createCloudTask.ts:7</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/elsoul/skeet-utils/blob/b42e55e/src/lib/task/createCloudTask.ts#L4">src/lib/task/createCloudTask.ts:4</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -61,7 +61,7 @@
 <li><a href="convertFromKebabCaseToLowerCase.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>convert<wbr/>From<wbr/>Kebab<wbr/>Case<wbr/>To<wbr/>Lower<wbr/>Case</span></a></li>
 <li><a href="convertToKebabCase.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>convert<wbr/>To<wbr/>Kebab<wbr/>Case</span></a></li>
 <li><a href="createCloudTask.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>create<wbr/>Cloud<wbr/>Task</span></a></li>
-<li><a href="createHttpTaskWithToken.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>create<wbr/>Http<wbr/>Task<wbr/>With<wbr/>Token</span></a></li>
+<li><a href="createGraphqlTask.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>create<wbr/>Graphql<wbr/>Task</span></a></li>
 <li><a href="decodeBase64.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>decode<wbr/>Base64</span></a></li>
 <li><a href="decrypt.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>decrypt</span></a></li>
 <li><a href="encodeBase64.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>encode<wbr/>Base64</span></a></li>

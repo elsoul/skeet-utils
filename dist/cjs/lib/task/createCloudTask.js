@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createCloudTask = void 0;
-const createHttpTaskWithToken_1 = require("./createHttpTaskWithToken");
+const createGraphqlTask_1 = require("./createGraphqlTask");
 const sendGraphqlRequest_1 = require("./sendGraphqlRequest");
-const createCloudTask = async (skeetOptions, queue = 'my-queue', graphqlQuery, inSeconds = 0) => {
+const createCloudTask = async (skeetOptions, queryName, params, inSeconds = 0) => {
     try {
         if (process.env.NODE_ENV !== 'production') {
-            const result = await (0, sendGraphqlRequest_1.sendGraphqlRequest)('mutation', queue, graphqlQuery);
+            const result = await (0, sendGraphqlRequest_1.sendGraphqlRequest)('mutation', queryName, params);
             return result;
         }
         else {
-            const result = await (0, createHttpTaskWithToken_1.createHttpTaskWithToken)(skeetOptions, queue, graphqlQuery, inSeconds);
+            const result = await (0, createGraphqlTask_1.createGraphqlTask)(skeetOptions, queryName, params, inSeconds);
             return result;
         }
     }

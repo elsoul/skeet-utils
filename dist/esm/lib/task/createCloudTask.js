@@ -1,13 +1,13 @@
-import { createHttpTaskWithToken, } from './createHttpTaskWithToken';
+import { createGraphqlTask } from './createGraphqlTask';
 import { sendGraphqlRequest } from './sendGraphqlRequest';
-export const createCloudTask = async (skeetOptions, queue = 'my-queue', graphqlQuery, inSeconds = 0) => {
+export const createCloudTask = async (skeetOptions, queryName, params, inSeconds = 0) => {
     try {
         if (process.env.NODE_ENV !== 'production') {
-            const result = await sendGraphqlRequest('mutation', queue, graphqlQuery);
+            const result = await sendGraphqlRequest('mutation', queryName, params);
             return result;
         }
         else {
-            const result = await createHttpTaskWithToken(skeetOptions, queue, graphqlQuery, inSeconds);
+            const result = await createGraphqlTask(skeetOptions, queryName, params, inSeconds);
             return result;
         }
     }

@@ -26,13 +26,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createGraphqlTask = void 0;
 const tasks_1 = require("@google-cloud/tasks");
 const dotenv = __importStar(require("dotenv"));
+const sendGraphqlRequest_1 = require("./sendGraphqlRequest");
 dotenv.config();
-const createGraphqlTask = async (skeetOptions, queue = 'my-queue', graphqlQuery, inSeconds = 0) => {
+const createGraphqlTask = async (skeetOptions, queryName, params, inSeconds = 0) => {
     try {
         const { projectId, region, lbDomain } = skeetOptions;
         const client = new tasks_1.v2beta3.CloudTasksClient();
-        const parent = client.queuePath(projectId, region, queue);
-        const body = Buffer.from(JSON.stringify(graphqlQuery)).toString('base64');
+        const parent = client.queuePath(projectId, region, queryName);
+        const graphql = (0, sendGraphqlRequest_1.graphqlString)('mutation', queryName, params);
+        const body = Buffer.from(graphql).toString('base64');
         const serviceAccountEmail = `${projectId}@${projectId}.iam.gserviceaccount.com`;
         const url = `https://${lbDomain}/graphql`;
         const oidcToken = {

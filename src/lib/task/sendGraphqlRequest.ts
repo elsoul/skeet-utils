@@ -4,10 +4,31 @@ type QueryType = 'query' | 'mutation'
 export const sendGraphqlRequest = async <T extends Record<string, any>>(
   queryType: QueryType,
   queryName: string,
-  query: T,
+  params: T,
 ) => {
   try {
-    const inputString = Object.entries(query)
+    const body = graphqlString(queryType, queryName, params)
+
+    const baseUrl = 'http://localhost:3000/graphql'
+    const res = await fetch(baseUrl, {
+      method: 'POST',
+      body,
+      headers: { 'Content-Type': 'application/json' },
+    })
+
+    return res
+  } catch (error) {
+    throw new Error(`sendGraphqlRequest failed: ${error}`)
+  }
+}
+
+export const graphqlString = <T extends Record<string, any>>(
+  queryType: QueryType,
+  queryName: string,
+  params: T,
+) => {
+  try {
+    const inputString = Object.entries(params)
       .map(([key, value]) => {
         if (value === undefined || value === null) {
           return `${key}: ""`
@@ -23,16 +44,8 @@ export const sendGraphqlRequest = async <T extends Record<string, any>>(
       query: `${queryType} { ${queryName}(${inputString}) { id } }`,
       variables: {},
     })
-
-    const baseUrl = 'http://localhost:3000/graphql'
-    const res = await fetch(baseUrl, {
-      method: 'POST',
-      body: graphql,
-      headers: { 'Content-Type': 'application/json' },
-    })
-
-    return res
+    return graphql
   } catch (error) {
-    throw new Error(`sendGraphqlRequest failed: ${error}`)
+    throw new Error(`graphqlString failed: ${error}`)
   }
 }

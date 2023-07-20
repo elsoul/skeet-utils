@@ -6,4 +6,4 @@ export type SkeetOptions = {
     lbDomain: string;
     nsDomain: string;
 };
-export declare const createHttpTaskWithToken: <T>(skeetOptions: SkeetOptions, queue: string | undefined, graphqlQuery: T, inSeconds?: number) => Promise<string | null | undefined>;
+export declare const createGraphqlTask: <T>(skeetOptions: SkeetOptions, queue: string | undefined, graphqlQuery: T, inSeconds?: number) => Promise<string | null | undefined>;
