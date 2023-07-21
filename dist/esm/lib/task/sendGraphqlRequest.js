@@ -1,14 +1,21 @@
 import fetch from 'node-fetch';
-export const sendGraphqlRequest = async (queryType, queryName, params) => {
+import * as dotenv from 'dotenv';
+dotenv.config();
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN || '';
+export const sendGraphqlRequest = async (queryType, queryName, params, returnParams = ['id']) => {
     try {
-        const body = graphqlString(queryType, queryName, params);
+        const body = graphqlString(queryType, queryName, params, returnParams);
         const baseUrl = 'http://localhost:3000/graphql';
         const res = await fetch(baseUrl, {
             method: 'POST',
             body,
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${ACCESS_TOKEN}`,
+            },
         });
-        return res;
+        const result = await res.json();
+        return result;
     }
     catch (error) {
         throw new Error(`sendGraphqlRequest failed: ${error}`);

@@ -1,5 +1,5 @@
 import { v2beta3 } from '@google-cloud/tasks'
-import { graphqlString } from './sendGraphqlRequest'
+import { GraphQLResponse, graphqlString } from './sendGraphqlRequest'
 import * as dotenv from 'dotenv'
 dotenv.config()
 
@@ -46,7 +46,14 @@ export const createGraphqlTask = async <T extends Record<string, any>>(
     const request = { parent, task }
     const [response] = await client.createTask(request)
     console.log(`Created task ${response.name}`)
-    return response.name
+    const result: GraphQLResponse = {
+      data: {
+        cloudTask: {
+          id: response.name,
+        },
+      },
+    }
+    return result
   } catch (error) {
     throw new Error(`createGraphqlTask: ${error}`)
   }

@@ -32,7 +32,7 @@ const createCloudTask = async (queryName, params, endpoint = 'http://localhost:3
     try {
         if (process.env.NODE_ENV !== 'production') {
             const result = await (0, sendGraphqlRequest_1.sendGraphqlRequest)('mutation', queryName, params);
-            return await result.json();
+            return result;
         }
         else {
             const result = await (0, createGraphqlTask_1.createGraphqlTask)(queryName, params, endpoint, returnParams, inSeconds);

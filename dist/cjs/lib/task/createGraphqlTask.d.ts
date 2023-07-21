@@ -1,1 +1,2 @@
-export declare const createGraphqlTask: <T extends Record<string, any>>(queryName: string, params: T, endpoint: string, returnParams?: string[], inSeconds?: number) => Promise<string | null | undefined>;
+import { GraphQLResponse } from './sendGraphqlRequest';
+export declare const createGraphqlTask: <T extends Record<string, any>>(queryName: string, params: T, endpoint: string, returnParams?: string[], inSeconds?: number) => Promise<GraphQLResponse>;

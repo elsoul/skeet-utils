@@ -36,7 +36,14 @@ export const createGraphqlTask = async (queryName, params, endpoint, returnParam
         const request = { parent, task };
         const [response] = await client.createTask(request);
         console.log(`Created task ${response.name}`);
-        return response.name;
+        const result = {
+            data: {
+                cloudTask: {
+                    id: response.name,
+                },
+            },
+        };
+        return result;
     }
     catch (error) {
         throw new Error(`createGraphqlTask: ${error}`);

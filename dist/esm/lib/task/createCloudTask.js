@@ -6,7 +6,7 @@ export const createCloudTask = async (queryName, params, endpoint = 'http://loca
     try {
         if (process.env.NODE_ENV !== 'production') {
             const result = await sendGraphqlRequest('mutation', queryName, params);
-            return await result.json();
+            return result;
         }
         else {
             const result = await createGraphqlTask(queryName, params, endpoint, returnParams, inSeconds);
