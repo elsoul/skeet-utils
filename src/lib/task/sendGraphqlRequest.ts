@@ -3,13 +3,18 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 
 export type QueryType = 'query' | 'mutation'
-export type GraphQLResponse = {
-  data: Record<string, any>
+export type GraphQLResponse<T> = {
+  data: {
+    [key: string]: T
+  }
 }
 
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN || ''
 
-export const sendGraphqlRequest = async <T extends Record<string, any>>(
+export const sendGraphqlRequest = async <
+  T extends Record<string, any>,
+  R extends Record<string, any>,
+>(
   queryType: QueryType,
   queryName: string,
   params: T,
@@ -27,7 +32,7 @@ export const sendGraphqlRequest = async <T extends Record<string, any>>(
         Authorization: `Bearer ${ACCESS_TOKEN}`,
       },
     })
-    const result: GraphQLResponse = await res.json()
+    const result: GraphQLResponse<R> = await res.json()
     return result
   } catch (error) {
     throw new Error(`sendGraphqlRequest failed: ${error}`)

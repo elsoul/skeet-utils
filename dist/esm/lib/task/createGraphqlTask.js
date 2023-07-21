@@ -39,7 +39,7 @@ export const createGraphqlTask = async (queryName, params, endpoint, returnParam
         const result = {
             data: {
                 cloudTask: {
-                    id: response.name,
+                    id: response.name || '',
                 },
             },
         };

@@ -10,6 +10,8 @@ const region = process.env.EVENTARC_CLOUD_EVENT_SOURCE
   ? process.env.EVENTARC_CLOUD_EVENT_SOURCE.split('/')[3]
   : process.env.SKEET_GCP_REGION || 'europe-west6'
 
+export type CloudTaskResponse = { id: string }
+
 export const createGraphqlTask = async <T extends Record<string, any>>(
   queryName: string,
   params: T,
@@ -46,10 +48,10 @@ export const createGraphqlTask = async <T extends Record<string, any>>(
     const request = { parent, task }
     const [response] = await client.createTask(request)
     console.log(`Created task ${response.name}`)
-    const result: GraphQLResponse = {
+    const result: GraphQLResponse<CloudTaskResponse> = {
       data: {
         cloudTask: {
-          id: response.name,
+          id: response.name || '',
         },
       },
     }
