@@ -1,7 +1,9 @@
-import { CloudTaskResponse, createGraphqlTask } from './createGraphqlTask'
+import { createGraphqlTask } from './createGraphqlTask'
 import { GraphQLResponse, sendGraphqlRequest } from './sendGraphqlRequest'
 import * as dotenv from 'dotenv'
 dotenv.config()
+
+export type CloudTaskResponse = { id: string; env: string }
 
 export const createCloudTask = async <
   T extends {
@@ -16,10 +18,19 @@ export const createCloudTask = async <
 ) => {
   try {
     if (process.env.NODE_ENV !== 'production') {
-      const result = await sendGraphqlRequest<
-        T,
-        GraphQLResponse<Record<string, any>>
-      >('mutation', queryName, params)
+      const postResponse = await sendGraphqlRequest<T, { id: string }>(
+        'mutation',
+        queryName,
+        params,
+      )
+      const result: GraphQLResponse<CloudTaskResponse> = {
+        data: {
+          cloudTask: {
+            id: postResponse.data[queryName].id,
+            env: 'development',
+          },
+        },
+      }
       return result
     } else {
       const result = await createGraphqlTask(

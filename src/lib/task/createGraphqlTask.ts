@@ -1,6 +1,7 @@
 import { v2beta3 } from '@google-cloud/tasks'
 import { GraphQLResponse, graphqlString } from './sendGraphqlRequest'
 import * as dotenv from 'dotenv'
+import { CloudTaskResponse } from './createCloudTask'
 dotenv.config()
 
 const projectId =
@@ -9,8 +10,6 @@ const projectId =
 const region = process.env.EVENTARC_CLOUD_EVENT_SOURCE
   ? process.env.EVENTARC_CLOUD_EVENT_SOURCE.split('/')[3]
   : process.env.SKEET_GCP_REGION || 'europe-west6'
-
-export type CloudTaskResponse = { id: string }
 
 export const createGraphqlTask = async <T extends Record<string, any>>(
   queryName: string,
@@ -52,6 +51,7 @@ export const createGraphqlTask = async <T extends Record<string, any>>(
       data: {
         cloudTask: {
           id: response.name || '',
+          env: 'production',
         },
       },
     }
