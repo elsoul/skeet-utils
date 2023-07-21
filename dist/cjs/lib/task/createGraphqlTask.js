@@ -66,6 +66,7 @@ const createGraphqlTask = async (queryName, params, endpoint, returnParams = ['i
             data: {
                 cloudTask: {
                     id: response.name || '',
+                    env: 'production',
                 },
             },
         };

@@ -24,7 +24,7 @@
   "homepage": "https://skeet.dev",
   "scripts": {
     "test": "jest --coverage=false --detectOpenHandles --maxWorkers=1",
-    "build": "yarn version:update && yarn build:cjs && yarn build:esm",
+    "build": "yarn build-doc&& yarn version:update && yarn build:cjs && yarn build:esm",
     "update:packages": "ncu -u && yarn",
     "version:update": "ts-node -r tsconfig-paths/register --transpile-only release.ts",
     "build:cjs": "tsc -b tsconfig.cjs.json",

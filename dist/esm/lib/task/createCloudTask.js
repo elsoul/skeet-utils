@@ -5,7 +5,15 @@ dotenv.config();
 export const createCloudTask = async (queryName, params, endpoint = 'http://localhost:3000', returnParams = ['id'], inSeconds = 0) => {
     try {
         if (process.env.NODE_ENV !== 'production') {
-            const result = await sendGraphqlRequest('mutation', queryName, params);
+            const postResponse = await sendGraphqlRequest('mutation', queryName, params);
+            const result = {
+                data: {
+                    cloudTask: {
+                        id: postResponse.data[queryName].id,
+                        env: 'development',
+                    },
+                },
+            };
             return result;
         }
         else {

@@ -40,6 +40,7 @@ export const createGraphqlTask = async (queryName, params, endpoint, returnParam
             data: {
                 cloudTask: {
                     id: response.name || '',
+                    env: 'production',
                 },
             },
         };
