@@ -30,13 +30,12 @@ const sendGraphqlRequest_1 = require("./sendGraphqlRequest");
 dotenv.config();
 const createGraphqlTask = async (skeetOptions, queryName, params, inSeconds = 0) => {
     try {
-        const { projectId, region, lbDomain } = skeetOptions;
+        const { projectId, region, graphqlEndpoint } = skeetOptions;
         const client = new tasks_1.v2beta3.CloudTasksClient();
         const parent = client.queuePath(projectId, region, queryName);
         const graphql = (0, sendGraphqlRequest_1.graphqlString)('mutation', queryName, params);
         const body = Buffer.from(graphql).toString('base64');
         const serviceAccountEmail = `${projectId}@${projectId}.iam.gserviceaccount.com`;
-        const url = `https://${lbDomain}/graphql`;
         const oidcToken = {
             serviceAccountEmail,
         };
@@ -46,7 +45,7 @@ const createGraphqlTask = async (skeetOptions, queryName, params, inSeconds = 0)
                     'Content-Type': 'application/json',
                 },
                 httpMethod: 'POST',
-                url,
+                url: graphqlEndpoint,
                 oidcToken,
                 body,
             },

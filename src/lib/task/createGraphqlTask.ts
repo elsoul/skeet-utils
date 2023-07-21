@@ -10,6 +10,7 @@ export type SkeetOptions = {
   appDomain: string
   lbDomain: string
   nsDomain: string
+  graphqlEndpoint: string
 }
 
 export const createGraphqlTask = async <T extends Record<string, any>>(
@@ -19,13 +20,12 @@ export const createGraphqlTask = async <T extends Record<string, any>>(
   inSeconds = 0,
 ) => {
   try {
-    const { projectId, region, lbDomain } = skeetOptions
+    const { projectId, region, graphqlEndpoint } = skeetOptions
     const client = new v2beta3.CloudTasksClient()
     const parent = client.queuePath(projectId, region, queryName)
     const graphql = graphqlString('mutation', queryName, params)
     const body: string = Buffer.from(graphql).toString('base64')
     const serviceAccountEmail = `${projectId}@${projectId}.iam.gserviceaccount.com`
-    const url = `https://${lbDomain}/graphql`
     const oidcToken = {
       serviceAccountEmail,
     }
@@ -35,7 +35,7 @@ export const createGraphqlTask = async <T extends Record<string, any>>(
           'Content-Type': 'application/json',
         },
         httpMethod: 'POST' as const,
-        url,
+        url: graphqlEndpoint,
         oidcToken,
         body,
       },
