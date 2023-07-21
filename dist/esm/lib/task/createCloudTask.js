@@ -1,13 +1,15 @@
 import { createGraphqlTask } from './createGraphqlTask';
 import { sendGraphqlRequest } from './sendGraphqlRequest';
-export const createCloudTask = async (skeetOptions, queryName, params, inSeconds = 0) => {
+import * as dotenv from 'dotenv';
+dotenv.config();
+export const createCloudTask = async (projectId, region, queryName, params, endpoint, inSeconds = 0) => {
     try {
         if (process.env.NODE_ENV !== 'production') {
             const result = await sendGraphqlRequest('mutation', queryName, params);
             return result;
         }
         else {
-            const result = await createGraphqlTask(skeetOptions, queryName, params, inSeconds);
+            const result = await createGraphqlTask(projectId, region, queryName, params, endpoint, inSeconds);
             return result;
         }
     }

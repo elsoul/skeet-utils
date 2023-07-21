@@ -1,14 +1,18 @@
-import { SkeetOptions, createGraphqlTask } from './createGraphqlTask'
+import { createGraphqlTask } from './createGraphqlTask'
 import { sendGraphqlRequest } from './sendGraphqlRequest'
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 export const createCloudTask = async <
   T extends {
     [key: string]: any
   },
 >(
-  skeetOptions: SkeetOptions,
+  projectId: string,
+  region: string,
   queryName: string,
   params: T,
+  endpoint: string,
   inSeconds = 0,
 ) => {
   try {
@@ -17,9 +21,11 @@ export const createCloudTask = async <
       return result
     } else {
       const result = await createGraphqlTask(
-        skeetOptions,
+        projectId,
+        region,
         queryName,
         params,
+        endpoint,
         inSeconds,
       )
       return result

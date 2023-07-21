@@ -1,37 +1,10 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createGraphqlTask = void 0;
 const tasks_1 = require("@google-cloud/tasks");
-const dotenv = __importStar(require("dotenv"));
 const sendGraphqlRequest_1 = require("./sendGraphqlRequest");
-dotenv.config();
-const GRAPHQL_ENDPOINT = process.env.SKEET_GRAPHQL_ENDPOINT_URL || '';
-const createGraphqlTask = async (skeetOptions, queryName, params, inSeconds = 0) => {
+const createGraphqlTask = async (projectId, region, queryName, params, endpoint, inSeconds = 0) => {
     try {
-        const { projectId, region } = skeetOptions;
         const client = new tasks_1.v2beta3.CloudTasksClient();
         const parent = client.queuePath(projectId, region, queryName);
         const graphql = (0, sendGraphqlRequest_1.graphqlString)('mutation', queryName, params);
@@ -46,7 +19,7 @@ const createGraphqlTask = async (skeetOptions, queryName, params, inSeconds = 0)
                     'Content-Type': 'application/json',
                 },
                 httpMethod: 'POST',
-                url: GRAPHQL_ENDPOINT + '/graphql',
+                url: endpoint + '/graphql',
                 oidcToken,
                 body,
             },

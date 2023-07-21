@@ -1,9 +1,1 @@
-export type SkeetOptions = {
-    name: string;
-    projectId: string;
-    region: string;
-    appDomain: string;
-    lbDomain: string;
-    nsDomain: string;
-};
-export declare const createGraphqlTask: <T extends Record<string, any>>(skeetOptions: SkeetOptions, queryName: string, params: T, inSeconds?: number) => Promise<string | null | undefined>;
+export declare const createGraphqlTask: <T extends Record<string, any>>(projectId: string, region: string, queryName: string, params: T, endpoint: string, inSeconds?: number) => Promise<string | null | undefined>;

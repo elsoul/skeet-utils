@@ -1,11 +1,7 @@
 import { v2beta3 } from '@google-cloud/tasks';
-import * as dotenv from 'dotenv';
 import { graphqlString } from './sendGraphqlRequest';
-dotenv.config();
-const GRAPHQL_ENDPOINT = process.env.SKEET_GRAPHQL_ENDPOINT_URL || '';
-export const createGraphqlTask = async (skeetOptions, queryName, params, inSeconds = 0) => {
+export const createGraphqlTask = async (projectId, region, queryName, params, endpoint, inSeconds = 0) => {
     try {
-        const { projectId, region } = skeetOptions;
         const client = new v2beta3.CloudTasksClient();
         const parent = client.queuePath(projectId, region, queryName);
         const graphql = graphqlString('mutation', queryName, params);
@@ -20,7 +16,7 @@ export const createGraphqlTask = async (skeetOptions, queryName, params, inSecon
                     'Content-Type': 'application/json',
                 },
                 httpMethod: 'POST',
-                url: GRAPHQL_ENDPOINT + '/graphql',
+                url: endpoint + '/graphql',
                 oidcToken,
                 body,
             },
