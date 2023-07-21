@@ -26,6 +26,7 @@ export const graphqlString = <T extends Record<string, any>>(
   queryType: QueryType,
   queryName: string,
   params: T,
+  outputString = ['id'],
 ) => {
   try {
     const inputString = Object.entries(params)
@@ -40,8 +41,10 @@ export const graphqlString = <T extends Record<string, any>>(
       })
       .join(', ')
 
+    const returnParams = outputString.join(' ')
+
     const graphql = JSON.stringify({
-      query: `${queryType} { ${queryName}(${inputString}) { id } }`,
+      query: `${queryType} { ${queryName}(${inputString}) { ${returnParams} } }`,
       variables: {},
     })
     return graphql

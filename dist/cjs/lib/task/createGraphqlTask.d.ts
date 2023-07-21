@@ -1,1 +1,1 @@
-export declare const createGraphqlTask: <T extends Record<string, any>>(projectId: string, region: string, queryName: string, params: T, endpoint: string, inSeconds?: number) => Promise<string | null | undefined>;
+export declare const createGraphqlTask: <T extends Record<string, any>>(queryName: string, params: T, endpoint: string, returnParams?: string[], inSeconds?: number) => Promise<string | null | undefined>;

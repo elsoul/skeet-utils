@@ -28,14 +28,14 @@ const createGraphqlTask_1 = require("./createGraphqlTask");
 const sendGraphqlRequest_1 = require("./sendGraphqlRequest");
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
-const createCloudTask = async (projectId, region, queryName, params, endpoint, inSeconds = 0) => {
+const createCloudTask = async (queryName, params, endpoint = 'http://localhost:3000', returnParams = ['id'], inSeconds = 0) => {
     try {
         if (process.env.NODE_ENV !== 'production') {
             const result = await (0, sendGraphqlRequest_1.sendGraphqlRequest)('mutation', queryName, params);
-            return result;
+            return await result.json();
         }
         else {
-            const result = await (0, createGraphqlTask_1.createGraphqlTask)(projectId, region, queryName, params, endpoint, inSeconds);
+            const result = await (0, createGraphqlTask_1.createGraphqlTask)(queryName, params, endpoint, returnParams, inSeconds);
             return result;
         }
     }

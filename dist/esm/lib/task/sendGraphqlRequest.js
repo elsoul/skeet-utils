@@ -14,7 +14,7 @@ export const sendGraphqlRequest = async (queryType, queryName, params) => {
         throw new Error(`sendGraphqlRequest failed: ${error}`);
     }
 };
-export const graphqlString = (queryType, queryName, params) => {
+export const graphqlString = (queryType, queryName, params, outputString = ['id']) => {
     try {
         const inputString = Object.entries(params)
             .map(([key, value]) => {
@@ -29,8 +29,9 @@ export const graphqlString = (queryType, queryName, params) => {
             }
         })
             .join(', ');
+        const returnParams = outputString.join(' ');
         const graphql = JSON.stringify({
-            query: `${queryType} { ${queryName}(${inputString}) { id } }`,
+            query: `${queryType} { ${queryName}(${inputString}) { ${returnParams} } }`,
             variables: {},
         });
         return graphql;
