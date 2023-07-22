@@ -17,4 +17,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./createGraphqlTask"), exports);
 __exportStar(require("./createCloudTask"), exports);
 __exportStar(require("./sendGraphqlRequest"), exports);
+__exportStar(require("./skeetGraphql"), exports);
 //# sourceMappingURL=index.js.map
