@@ -16,6 +16,7 @@ export const skeetGraphql = async <
 ) => {
   try {
     const body = graphqlString(queryType, queryName, params, returnParams)
+    console.log({ graphqlString: body })
     const res = await fetch(endpoint, {
       method: 'POST',
       body,

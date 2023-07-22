@@ -34,6 +34,7 @@ dotenv.config();
 const skeetGraphql = async (accessToken, endpoint, queryType, queryName, params, returnParams = ['id']) => {
     try {
         const body = (0, sendGraphqlRequest_1.graphqlString)(queryType, queryName, params, returnParams);
+        console.log({ graphqlString: body });
         const res = await (0, node_fetch_1.default)(endpoint, {
             method: 'POST',
             body,
