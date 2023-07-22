@@ -3,13 +3,12 @@ import * as dotenv from 'dotenv'
 import { GraphQLResponse, QueryType, graphqlString } from './sendGraphqlRequest'
 dotenv.config()
 
-const endpoint = process.env.SKEET_GRAPHQL_ENDPOINT_URL || ''
-
 export const skeetGraphql = async <
   T extends Record<string, any>,
   R extends Record<string, any>,
 >(
   accessToken: string,
+  endpoint: string,
   queryType: QueryType,
   queryName: string,
   params: T,

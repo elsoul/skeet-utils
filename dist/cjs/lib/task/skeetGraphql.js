@@ -31,8 +31,7 @@ const node_fetch_1 = __importDefault(require("node-fetch"));
 const dotenv = __importStar(require("dotenv"));
 const sendGraphqlRequest_1 = require("./sendGraphqlRequest");
 dotenv.config();
-const endpoint = process.env.SKEET_GRAPHQL_ENDPOINT_URL || '';
-const skeetGraphql = async (accessToken, queryType, queryName, params, returnParams = ['id']) => {
+const skeetGraphql = async (accessToken, endpoint, queryType, queryName, params, returnParams = ['id']) => {
     try {
         const body = (0, sendGraphqlRequest_1.graphqlString)(queryType, queryName, params, returnParams);
         const res = await (0, node_fetch_1.default)(endpoint, {
