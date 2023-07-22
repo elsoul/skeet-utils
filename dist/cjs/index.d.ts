@@ -11,5 +11,6 @@ export { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 export { ApolloServerPluginLandingPageDisabled } from '@apollo/server/plugin/disabled';
 export { relayNodeInterfacePlugin } from '@jcm/nexus-plugin-relay-node-interface';
 export { relayGlobalIdPlugin } from '@jcm/nexus-plugin-relay-global-id';
+export { RelayNodeInterfacePluginConfig } from '@jcm/nexus-plugin-relay-node-interface';
 import queryComplexity, { simpleEstimator } from 'graphql-query-complexity';
 export { simpleEstimator, queryComplexity };
