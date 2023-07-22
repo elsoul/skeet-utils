@@ -19,4 +19,5 @@ __exportStar(require("./crypto"), exports);
 __exportStar(require("./string"), exports);
 __exportStar(require("./discord"), exports);
 __exportStar(require("./task"), exports);
+__exportStar(require("./http"), exports);
 //# sourceMappingURL=index.js.map
