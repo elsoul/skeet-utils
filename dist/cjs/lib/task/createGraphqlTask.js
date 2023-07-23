@@ -48,7 +48,7 @@ const createGraphqlTask = async (queryName, params, endpoint, returnParams = ['i
                     'Content-Type': 'application/json',
                 },
                 httpMethod: 'POST',
-                url: endpoint + '/graphql',
+                url: endpoint,
                 oidcToken,
                 body,
             },

@@ -33,7 +33,7 @@ export const createGraphqlTask = async <T extends Record<string, any>>(
           'Content-Type': 'application/json',
         },
         httpMethod: 'POST' as const,
-        url: endpoint + '/graphql',
+        url: endpoint,
         oidcToken,
         body,
       },

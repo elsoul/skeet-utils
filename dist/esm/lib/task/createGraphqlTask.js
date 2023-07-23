@@ -22,7 +22,7 @@ export const createGraphqlTask = async (queryName, params, endpoint, returnParam
                     'Content-Type': 'application/json',
                 },
                 httpMethod: 'POST',
-                url: endpoint + '/graphql',
+                url: endpoint,
                 oidcToken,
                 body,
             },

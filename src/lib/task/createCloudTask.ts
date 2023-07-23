@@ -12,7 +12,7 @@ export const createCloudTask = async <
 >(
   queryName: string,
   params: T,
-  endpoint = 'http://localhost:3000',
+  endpoint = 'http://localhost:3000/graphql',
   returnParams = ['id'],
   inSeconds = 0,
 ) => {

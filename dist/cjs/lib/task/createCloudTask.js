@@ -28,7 +28,7 @@ const createGraphqlTask_1 = require("./createGraphqlTask");
 const sendGraphqlRequest_1 = require("./sendGraphqlRequest");
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
-const createCloudTask = async (queryName, params, endpoint = 'http://localhost:3000', returnParams = ['id'], inSeconds = 0) => {
+const createCloudTask = async (queryName, params, endpoint = 'http://localhost:3000/graphql', returnParams = ['id'], inSeconds = 0) => {
     try {
         if (process.env.NODE_ENV !== 'production') {
             const postResponse = await (0, sendGraphqlRequest_1.sendGraphqlRequest)('mutation', queryName, params);
