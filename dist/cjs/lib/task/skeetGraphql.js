@@ -31,11 +31,16 @@ const node_fetch_1 = __importDefault(require("node-fetch"));
 const dotenv = __importStar(require("dotenv"));
 const sendGraphqlRequest_1 = require("./sendGraphqlRequest");
 dotenv.config();
+const skeetEnv = process.env.NODE_ENV || 'development';
 const skeetGraphql = async (accessToken, endpoint, queryType, queryName, params, returnParams = ['id']) => {
     try {
         const body = (0, sendGraphqlRequest_1.graphqlString)(queryType, queryName, params, returnParams);
+        let baseUrl = 'http://localhost:3000/graphql';
+        if (skeetEnv === 'production') {
+            baseUrl = endpoint;
+        }
         console.log({ graphqlString: body });
-        const res = await (0, node_fetch_1.default)(endpoint, {
+        const res = await (0, node_fetch_1.default)(baseUrl, {
             method: 'POST',
             body,
             headers: {
