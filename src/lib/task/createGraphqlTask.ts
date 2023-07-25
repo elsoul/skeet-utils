@@ -12,6 +12,7 @@ const region = process.env.EVENTARC_CLOUD_EVENT_SOURCE
   : process.env.SKEET_GCP_REGION || 'europe-west6'
 
 export const createGraphqlTask = async <T extends Record<string, any>>(
+  accessToken: string,
   queryName: string,
   params: T,
   endpoint: string,
@@ -31,6 +32,7 @@ export const createGraphqlTask = async <T extends Record<string, any>>(
       httpRequest: {
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
         },
         httpMethod: 'POST' as const,
         url: endpoint,
