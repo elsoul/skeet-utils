@@ -12,7 +12,6 @@ const region = process.env.EVENTARC_CLOUD_EVENT_SOURCE
   : process.env.SKEET_GCP_REGION || 'europe-west6'
 
 export const createGraphqlTask = async <T extends Record<string, any>>(
-  accessToken: string,
   queryName: string,
   params: T,
   endpoint: string,
@@ -22,13 +21,7 @@ export const createGraphqlTask = async <T extends Record<string, any>>(
   try {
     const client = new v2beta3.CloudTasksClient()
     const parent = client.queuePath(projectId, region, queryName)
-    const graphqlBody = { ...params, accessToken }
-    const graphql = graphqlString(
-      'mutation',
-      queryName,
-      graphqlBody,
-      returnParams,
-    )
+    const graphql = graphqlString('mutation', queryName, params, returnParams)
     const body: string = Buffer.from(graphql).toString('base64')
     const serviceAccountEmail = `${projectId}@${projectId}.iam.gserviceaccount.com`
     const oidcToken = {

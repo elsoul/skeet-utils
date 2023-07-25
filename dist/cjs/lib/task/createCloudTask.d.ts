@@ -5,4 +5,4 @@ export type CloudTaskResponse = {
 };
 export declare const createCloudTask: <T extends {
     [key: string]: any;
-}>(accessToken: string, queryName: string, params: T, endpoint?: string, returnParams?: string[], inSeconds?: number) => Promise<GraphQLResponse<CloudTaskResponse>>;
+}>(queryName: string, params: T, endpoint?: string, returnParams?: string[], inSeconds?: number) => Promise<GraphQLResponse<CloudTaskResponse>>;

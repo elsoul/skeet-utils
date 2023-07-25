@@ -32,12 +32,11 @@ const projectId = process.env.GOOGLE_CLOUD_PROJECT || process.env.GCLOUD_PROJECT
 const region = process.env.EVENTARC_CLOUD_EVENT_SOURCE
     ? process.env.EVENTARC_CLOUD_EVENT_SOURCE.split('/')[3]
     : process.env.SKEET_GCP_REGION || 'europe-west6';
-const createGraphqlTask = async (accessToken, queryName, params, endpoint, returnParams = ['id'], inSeconds = 0) => {
+const createGraphqlTask = async (queryName, params, endpoint, returnParams = ['id'], inSeconds = 0) => {
     try {
         const client = new tasks_1.v2beta3.CloudTasksClient();
         const parent = client.queuePath(projectId, region, queryName);
-        const graphqlBody = { ...params, accessToken };
-        const graphql = (0, sendGraphqlRequest_1.graphqlString)('mutation', queryName, graphqlBody, returnParams);
+        const graphql = (0, sendGraphqlRequest_1.graphqlString)('mutation', queryName, params, returnParams);
         const body = Buffer.from(graphql).toString('base64');
         const serviceAccountEmail = `${projectId}@${projectId}.iam.gserviceaccount.com`;
         const oidcToken = {

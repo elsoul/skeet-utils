@@ -1,4 +1,3 @@
-import { access } from 'fs'
 import { createGraphqlTask } from './createGraphqlTask'
 import { GraphQLResponse, sendGraphqlRequest } from './sendGraphqlRequest'
 import * as dotenv from 'dotenv'
@@ -11,7 +10,6 @@ export const createCloudTask = async <
     [key: string]: any
   },
 >(
-  accessToken: string,
   queryName: string,
   params: T,
   endpoint = 'http://localhost:3000/graphql',
@@ -36,7 +34,6 @@ export const createCloudTask = async <
       return result
     } else {
       const result = await createGraphqlTask(
-        accessToken,
         queryName,
         params,
         endpoint,
