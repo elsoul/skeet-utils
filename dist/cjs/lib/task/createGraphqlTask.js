@@ -36,10 +36,10 @@ const createGraphqlTask = async (accessToken, queryName, params, endpoint, retur
     try {
         const client = new tasks_1.v2beta3.CloudTasksClient();
         const parent = client.queuePath(projectId, region, queryName);
-        const graphql = (0, sendGraphqlRequest_1.graphqlString)('mutation', queryName, params, returnParams);
+        const graphqlBody = { ...params, accessToken };
+        const graphql = (0, sendGraphqlRequest_1.graphqlString)('mutation', queryName, graphqlBody, returnParams);
         const body = Buffer.from(graphql).toString('base64');
         const serviceAccountEmail = `${projectId}@${projectId}.iam.gserviceaccount.com`;
-        console.log(`createGraphqlTask: ${accessToken}`);
         const oidcToken = {
             serviceAccountEmail,
             audience: 'skeet-graphql',
@@ -48,7 +48,6 @@ const createGraphqlTask = async (accessToken, queryName, params, endpoint, retur
             httpRequest: {
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${accessToken}`,
                 },
                 httpMethod: 'POST',
                 url: endpoint,
