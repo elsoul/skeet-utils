@@ -25,7 +25,7 @@ export const createGraphqlTask = async <T extends Record<string, any>>(
     const graphql = graphqlString('mutation', queryName, params, returnParams)
     const body: string = Buffer.from(graphql).toString('base64')
     const serviceAccountEmail = `${projectId}@${projectId}.iam.gserviceaccount.com`
-    console.log(`accessToken: ${accessToken}`)
+    console.log(`createGraphqlTask: ${accessToken}`)
     const oidcToken = {
       serviceAccountEmail,
     }

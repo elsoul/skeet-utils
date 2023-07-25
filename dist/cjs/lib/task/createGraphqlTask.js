@@ -39,6 +39,7 @@ const createGraphqlTask = async (accessToken, queryName, params, endpoint, retur
         const graphql = (0, sendGraphqlRequest_1.graphqlString)('mutation', queryName, params, returnParams);
         const body = Buffer.from(graphql).toString('base64');
         const serviceAccountEmail = `${projectId}@${projectId}.iam.gserviceaccount.com`;
+        console.log(`createGraphqlTask: ${accessToken}`);
         const oidcToken = {
             serviceAccountEmail,
         };
