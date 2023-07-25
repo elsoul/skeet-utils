@@ -42,6 +42,7 @@ const createGraphqlTask = async (accessToken, queryName, params, endpoint, retur
         console.log(`createGraphqlTask: ${accessToken}`);
         const oidcToken = {
             serviceAccountEmail,
+            audience: 'skeet-graphql',
         };
         const task = {
             httpRequest: {
