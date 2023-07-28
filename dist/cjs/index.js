@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GraphQLError = exports.toGlobalId = exports.fromGlobalId = exports.connectionFromPromisedArray = exports.connectionFromArray = exports.skeetGraphql = exports.sendGet = exports.sendPost = exports.sendGraphqlRequest = exports.createCloudTask = exports.createGraphqlTask = exports.gravatarIconUrl = exports.toUpperCase = exports.toLowerCase = exports.toPrismaId = exports.toGraphqlQuery = exports.toPascalCase = exports.toCamelCase = exports.convertToKebabCase = exports.convertFromKebabCaseToLowerCase = exports.generateIv = exports.decrypt = exports.encrypt = exports.sendDiscord = exports.decodeBase64 = exports.encodeBase64 = exports.sleep = exports.utcNow = void 0;
+exports.GraphQLError = exports.toGlobalId = exports.fromGlobalId = exports.connectionFromPromisedArray = exports.connectionFromArray = exports.graphqlString = exports.skeetGraphql = exports.sendGet = exports.sendPost = exports.sendGraphqlRequest = exports.createCloudTask = exports.createGraphqlTask = exports.gravatarIconUrl = exports.toUpperCase = exports.toLowerCase = exports.toPrismaId = exports.toGraphqlQuery = exports.toPascalCase = exports.toCamelCase = exports.convertToKebabCase = exports.convertFromKebabCaseToLowerCase = exports.generateIv = exports.decrypt = exports.encrypt = exports.sendDiscord = exports.decodeBase64 = exports.encodeBase64 = exports.sleep = exports.utcNow = void 0;
 var lib_1 = require("./lib");
 Object.defineProperty(exports, "utcNow", { enumerable: true, get: function () { return lib_1.utcNow; } });
 Object.defineProperty(exports, "sleep", { enumerable: true, get: function () { return lib_1.sleep; } });
@@ -25,6 +25,7 @@ Object.defineProperty(exports, "sendGraphqlRequest", { enumerable: true, get: fu
 Object.defineProperty(exports, "sendPost", { enumerable: true, get: function () { return lib_1.sendPost; } });
 Object.defineProperty(exports, "sendGet", { enumerable: true, get: function () { return lib_1.sendGet; } });
 Object.defineProperty(exports, "skeetGraphql", { enumerable: true, get: function () { return lib_1.skeetGraphql; } });
+Object.defineProperty(exports, "graphqlString", { enumerable: true, get: function () { return lib_1.graphqlString; } });
 var graphql_relay_1 = require("graphql-relay");
 Object.defineProperty(exports, "connectionFromArray", { enumerable: true, get: function () { return graphql_relay_1.connectionFromArray; } });
 Object.defineProperty(exports, "connectionFromPromisedArray", { enumerable: true, get: function () { return graphql_relay_1.connectionFromPromisedArray; } });

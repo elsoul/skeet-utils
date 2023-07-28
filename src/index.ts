@@ -22,6 +22,7 @@ export {
   sendPost,
   sendGet,
   skeetGraphql,
+  graphqlString,
 } from './lib'
 
 export {
