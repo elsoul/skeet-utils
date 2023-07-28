@@ -23,6 +23,13 @@ export const sendGraphqlRequest = async (queryType, queryName, params, returnPar
         throw new Error(`sendGraphqlRequest failed: ${error}`);
     }
 };
+const escapeGraphQLString = (str) => {
+    return str
+        .replace(/\\/g, '\\\\') // replace \ with \\
+        .replace(/"/g, '\\"') // replace " with \"
+        .replace(/\n/g, '\\n') // replace newline with \n
+        .replace(/`/g, '\\`'); // replace ` with \`
+};
 export const graphqlString = (queryType, queryName, params, outputString = ['id']) => {
     try {
         const inputString = Object.entries(params)
@@ -35,7 +42,7 @@ export const graphqlString = (queryType, queryName, params, outputString = ['id'
             }
             else {
                 // Escape special characters in the string
-                const escapedValue = JSON.stringify(value.toString());
+                const escapedValue = escapeGraphQLString(value);
                 return `${key}: ${escapedValue}`;
             }
         })
