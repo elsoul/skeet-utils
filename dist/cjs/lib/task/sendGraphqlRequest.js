@@ -73,7 +73,7 @@ const graphqlString = (queryType, queryName, params, outputString = ['id']) => {
             else {
                 // Escape special characters in the string
                 const escapedValue = escapeGraphQLString(value);
-                return `${key}: ${escapedValue}`;
+                return `${key}: \"${escapedValue}\"`;
             }
         })
             .join(', ');
