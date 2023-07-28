@@ -2,11 +2,10 @@ import fetch from 'node-fetch';
 import * as dotenv from 'dotenv';
 dotenv.config();
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN || '';
-export const sendGraphqlRequest = async (queryType, queryName, params, returnParams = ['id']) => {
+export const sendGraphqlRequest = async (queryType, queryName, params, returnParams = ['id'], endpoint = 'http://localhost:3000/graphql') => {
     try {
         const body = graphqlString(queryType, queryName, params, returnParams);
-        const baseUrl = 'http://localhost:3000/graphql';
-        const res = await fetch(baseUrl, {
+        const res = await fetch(endpoint, {
             method: 'POST',
             body,
             headers: {

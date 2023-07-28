@@ -31,11 +31,10 @@ const node_fetch_1 = __importDefault(require("node-fetch"));
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN || '';
-const sendGraphqlRequest = async (queryType, queryName, params, returnParams = ['id']) => {
+const sendGraphqlRequest = async (queryType, queryName, params, returnParams = ['id'], endpoint = 'http://localhost:3000/graphql') => {
     try {
         const body = (0, exports.graphqlString)(queryType, queryName, params, returnParams);
-        const baseUrl = 'http://localhost:3000/graphql';
-        const res = await (0, node_fetch_1.default)(baseUrl, {
+        const res = await (0, node_fetch_1.default)(endpoint, {
             method: 'POST',
             body,
             headers: {

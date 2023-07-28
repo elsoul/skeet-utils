@@ -23,6 +23,7 @@ export {
   sendGet,
   skeetGraphql,
   graphqlString,
+  QueryType,
 } from './lib'
 
 export {

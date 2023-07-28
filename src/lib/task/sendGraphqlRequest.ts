@@ -19,12 +19,11 @@ export const sendGraphqlRequest = async <
   queryName: string,
   params: T,
   returnParams = ['id'],
+  endpoint = 'http://localhost:3000/graphql',
 ) => {
   try {
     const body = graphqlString(queryType, queryName, params, returnParams)
-
-    const baseUrl = 'http://localhost:3000/graphql'
-    const res = await fetch(baseUrl, {
+    const res = await fetch(endpoint, {
       method: 'POST',
       body,
       headers: {
