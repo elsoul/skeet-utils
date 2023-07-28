@@ -32,8 +32,8 @@ const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN || '';
 const sendGraphqlRequest = async (queryType, queryName, params, returnParams = ['id'], endpoint = 'http://localhost:3000/graphql') => {
+    const body = (0, exports.graphqlString)(queryType, queryName, params, returnParams);
     try {
-        const body = (0, exports.graphqlString)(queryType, queryName, params, returnParams);
         const res = await (0, node_fetch_1.default)(endpoint, {
             method: 'POST',
             body,
@@ -43,9 +43,11 @@ const sendGraphqlRequest = async (queryType, queryName, params, returnParams = [
             },
         });
         const result = await res.json();
+        console.log(`GraphQL body: ${body}`);
         return result;
     }
     catch (error) {
+        console.log(`GraphQL body: ${body}`);
         throw new Error(`sendGraphqlRequest failed: ${error}`);
     }
 };

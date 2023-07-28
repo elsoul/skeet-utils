@@ -3,8 +3,8 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN || '';
 export const sendGraphqlRequest = async (queryType, queryName, params, returnParams = ['id'], endpoint = 'http://localhost:3000/graphql') => {
+    const body = graphqlString(queryType, queryName, params, returnParams);
     try {
-        const body = graphqlString(queryType, queryName, params, returnParams);
         const res = await fetch(endpoint, {
             method: 'POST',
             body,
@@ -14,9 +14,11 @@ export const sendGraphqlRequest = async (queryType, queryName, params, returnPar
             },
         });
         const result = await res.json();
+        console.log(`GraphQL body: ${body}`);
         return result;
     }
     catch (error) {
+        console.log(`GraphQL body: ${body}`);
         throw new Error(`sendGraphqlRequest failed: ${error}`);
     }
 };
