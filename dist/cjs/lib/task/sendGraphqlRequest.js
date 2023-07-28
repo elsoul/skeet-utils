@@ -31,10 +31,11 @@ const node_fetch_1 = __importDefault(require("node-fetch"));
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN || '';
-const sendGraphqlRequest = async (queryType, queryName, params, returnParams = ['id'], endpoint = 'http://localhost:3000/graphql') => {
+const sendGraphqlRequest = async (queryType, queryName, params, returnParams = ['id']) => {
     const body = (0, exports.graphqlString)(queryType, queryName, params, returnParams);
     try {
-        const res = await (0, node_fetch_1.default)(endpoint, {
+        const baseUrl = 'http://localhost:3000/graphql';
+        const res = await (0, node_fetch_1.default)(baseUrl, {
             method: 'POST',
             body,
             headers: {
@@ -43,11 +44,11 @@ const sendGraphqlRequest = async (queryType, queryName, params, returnParams = [
             },
         });
         const result = await res.json();
-        console.log(`GraphQL body: ${body}`);
+        console.log(`graphql body: ${body}`);
         return result;
     }
     catch (error) {
-        console.log(`GraphQL body: ${body}`);
+        console.log(`graphql body: ${body}`);
         throw new Error(`sendGraphqlRequest failed: ${error}`);
     }
 };
@@ -63,7 +64,9 @@ const graphqlString = (queryType, queryName, params, outputString = ['id']) => {
                 return `${key}: ${value}`;
             }
             else {
-                return `${key}: "${value}"`;
+                // Escape special characters in the string
+                const escapedValue = JSON.stringify(value.toString());
+                return `${key}: ${escapedValue}`;
             }
         })
             .join(', ');

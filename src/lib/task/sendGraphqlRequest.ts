@@ -19,11 +19,11 @@ export const sendGraphqlRequest = async <
   queryName: string,
   params: T,
   returnParams = ['id'],
-  endpoint = 'http://localhost:3000/graphql',
 ) => {
   const body = graphqlString(queryType, queryName, params, returnParams)
   try {
-    const res = await fetch(endpoint, {
+    const baseUrl = 'http://localhost:3000/graphql'
+    const res = await fetch(baseUrl, {
       method: 'POST',
       body,
       headers: {
@@ -32,10 +32,10 @@ export const sendGraphqlRequest = async <
       },
     })
     const result: GraphQLResponse<R> = await res.json()
-    console.log(`GraphQL body: ${body}`)
+    console.log(`graphql body: ${body}`)
     return result
   } catch (error) {
-    console.log(`GraphQL body: ${body}`)
+    console.log(`graphql body: ${body}`)
     throw new Error(`sendGraphqlRequest failed: ${error}`)
   }
 }
@@ -54,7 +54,9 @@ export const graphqlString = <T extends Record<string, any>>(
         } else if (typeof value === 'number' || typeof value === 'boolean') {
           return `${key}: ${value}`
         } else {
-          return `${key}: "${value}"`
+          // Escape special characters in the string
+          const escapedValue = JSON.stringify(value.toString())
+          return `${key}: ${escapedValue}`
         }
       })
       .join(', ')
