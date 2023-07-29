@@ -41,10 +41,10 @@ export const sendGraphqlRequest = async <
 }
 const escapeGraphQLString = (str: string): string => {
   return str
+    .replace(/\\`/g, '`') // replace \` with `
     .replace(/\\/g, '\\\\') // replace \ with \\
     .replace(/"/g, '\\"') // replace " with \"
     .replace(/\n/g, '\\n') // replace newline with \n
-    .replace(/`/g, '\\`') // replace ` with \`
 }
 
 export const graphqlString = <T extends Record<string, any>>(

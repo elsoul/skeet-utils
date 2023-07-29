@@ -55,10 +55,10 @@ const sendGraphqlRequest = async (queryType, queryName, params, returnParams = [
 exports.sendGraphqlRequest = sendGraphqlRequest;
 const escapeGraphQLString = (str) => {
     return str
+        .replace(/\\`/g, '`') // replace \` with `
         .replace(/\\/g, '\\\\') // replace \ with \\
         .replace(/"/g, '\\"') // replace " with \"
-        .replace(/\n/g, '\\n') // replace newline with \n
-        .replace(/`/g, '\\`'); // replace ` with \`
+        .replace(/\n/g, '\\n'); // replace newline with \n
 };
 const graphqlString = (queryType, queryName, params, outputString = ['id']) => {
     try {
