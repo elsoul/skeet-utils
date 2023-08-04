@@ -1,6 +1,6 @@
 {
   "name": "@skeet-framework/utils",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Skeet Framework Plugin - Utils",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -34,16 +34,9 @@
     "dev": "npx ts-node -r tsconfig-paths/register --transpile-only src/index.ts"
   },
   "dependencies": {
-    "@apollo/server": "4.8.1",
-    "@google-cloud/tasks": "3.2.0",
-    "@jcm/nexus-plugin-relay-global-id": "0.2.0",
-    "@jcm/nexus-plugin-relay-node-interface": "0.2.0",
     "date-fns": "2.30.0",
     "date-fns-tz": "2.0.0",
     "dotenv": "16.3.1",
-    "graphql": "16.7.1",
-    "graphql-middleware": "6.1.35",
-    "graphql-query-complexity": "0.12.0",
     "graphql-relay": "0.10.0",
     "node-fetch": "2.6.9"
   },

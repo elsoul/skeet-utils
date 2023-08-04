@@ -11,14 +11,10 @@ export {
   convertToKebabCase,
   toCamelCase,
   toPascalCase,
-  toGraphqlQuery,
   toPrismaId,
   toLowerCase,
   toUpperCase,
   gravatarIconUrl,
-  createGraphqlTask,
-  createCloudTask,
-  sendGraphqlRequest,
   sendPost,
   sendGet,
   skeetGraphql,
@@ -32,4 +28,3 @@ export {
   fromGlobalId,
   toGlobalId,
 } from 'graphql-relay'
-export { GraphQLError } from 'graphql'

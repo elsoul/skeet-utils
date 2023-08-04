@@ -609,7 +609,15 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.44.0.tgz#961a5903c74139390478bdc808bcde3fc45ab7af"
   integrity sha512-Ag+9YM4ocKQx9AarydN0KY2j0ErMHNIocPDrVo8zAE44xLTjEtz81OdR68/cydGtk6m6jDb5Za3r2useMzYmSw==
 
-"@google-cloud/tasks@^3.2.0":
+"@google-cloud/aiplatform@^2.17.0":
+  version "2.17.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/aiplatform/-/aiplatform-2.17.0.tgz#1218e7fcdfa609d06ee178c53b16d2b8f695b4d5"
+  integrity sha512-l4sRYSWhgiKjTo8/JG98Pf6Lz4LlQde7HEnnJbazWEHXJcMp5euSN3tMYGnjIZAKh9L5I+cr4XKM188lIjLpUw==
+  dependencies:
+    google-gax "^3.5.8"
+    protobuf.js "^1.1.2"
+
+"@google-cloud/tasks@3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@google-cloud/tasks/-/tasks-3.2.0.tgz#1f2b4e87cce004ad547fc7969b84a0151e607eee"
   integrity sha512-PsJnIBNulElxPGvD94Q4ItcZ+wP2iYawcSJac1trYRq65r3IeDcFr4JAEL9XBYQhNY6OE7qzDXRoj61h7kJf5A==
@@ -4114,6 +4122,11 @@ long@^5.0.0:
   resolved "https://registry.yarnpkg.com/long/-/long-5.2.3.tgz#a3ba97f3877cf1d778eccbcb048525ebb77499e1"
   integrity sha512-lcHwpNoggQTObv5apGNCTdJrO69eHOZMi4BNC+rTLER8iHAqGrUVeLh/irVIM7zTw2bOXA8T6uNPeujwOLg/2Q==
 
+long@~1.1.2:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/long/-/long-1.1.5.tgz#b5c2c10a3d83ee0ec0aaffb3e4e711d01f607e9a"
+  integrity sha512-TU6nAF5SdasnTr28c7e74P4Crbn9o3/zwo1pM22Wvg2i2vlZ4Eelxwu4QT7j21z0sDBlJDEnEZjXTZg2J8WJrg==
+
 lowercase-keys@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lowercase-keys/-/lowercase-keys-3.0.0.tgz#c5e7d442e37ead247ae9db117a9d0a467c89d4f2"
@@ -4923,6 +4936,13 @@ proto3-json-serializer@^1.0.0:
   integrity sha512-AwAuY4g9nxx0u52DnSMkqqgyLHaW/XaPLtaAo3y/ZCfeaQB/g4YDH4kb8Wc/mWzWvu0YjOznVnfn373MVZZrgw==
   dependencies:
     protobufjs "^7.0.0"
+
+protobuf.js@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/protobuf.js/-/protobuf.js-1.1.2.tgz#85870a1734a06a2ef0074d876cd7fe0b2ea0cf26"
+  integrity sha512-USO7Xus/pzPw549M1TguiyoOrKEhm9VMXv+CkDufcjMC8Rd7EPbxeRQPEjCV8ua1tm0k7z9xHkogcxovZogWdA==
+  dependencies:
+    long "~1.1.2"
 
 protobufjs-cli@1.1.1:
   version "1.1.1"
