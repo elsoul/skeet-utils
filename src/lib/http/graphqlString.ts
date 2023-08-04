@@ -1,7 +1,3 @@
-import fetch from 'node-fetch'
-import * as dotenv from 'dotenv'
-dotenv.config()
-
 export type QueryType = 'query' | 'mutation'
 export type GraphQLResponse<T> = {
   data: {
@@ -9,37 +5,7 @@ export type GraphQLResponse<T> = {
   }
 }
 
-const ACCESS_TOKEN = process.env.ACCESS_TOKEN || ''
-
-export const sendGraphqlRequest = async <
-  T extends Record<string, any>,
-  R extends Record<string, any>,
->(
-  queryType: QueryType,
-  queryName: string,
-  params: T,
-  returnParams = ['id'],
-) => {
-  const body = graphqlString(queryType, queryName, params, returnParams)
-  try {
-    const baseUrl = 'http://localhost:3000/graphql'
-    const res = await fetch(baseUrl, {
-      method: 'POST',
-      body,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
-      },
-    })
-    const result: GraphQLResponse<R> = await res.json()
-    console.log(`graphql body: ${body}`)
-    return result
-  } catch (error) {
-    console.log(`graphql body: ${body}`)
-    throw new Error(`sendGraphqlRequest failed: ${error}`)
-  }
-}
-const escapeGraphQLString = (str: string): string => {
+export const escapeGraphQLString = (str: string): string => {
   return str
     .replace(/\\`/g, '`') // replace \` with `
     .replace(/\\/g, '\\\\') // replace \ with \\

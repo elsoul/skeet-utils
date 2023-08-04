@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 import * as dotenv from 'dotenv'
-import { GraphQLResponse, QueryType, graphqlString } from './sendGraphqlRequest'
+import { GraphQLResponse, QueryType, graphqlString } from './graphqlString'
 dotenv.config()
 
 const skeetEnv = process.env.NODE_ENV || 'development'
