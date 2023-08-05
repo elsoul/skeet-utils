@@ -16,4 +16,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./sendPost"), exports);
 __exportStar(require("./sendGet"), exports);
+__exportStar(require("./skeetGraphql"), exports);
+__exportStar(require("./graphqlString"), exports);
 //# sourceMappingURL=index.js.map

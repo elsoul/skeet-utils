@@ -26,32 +26,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendDiscord = void 0;
+exports.skeetGraphql = void 0;
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const dotenv = __importStar(require("dotenv"));
+const graphqlString_1 = require("./graphqlString");
 dotenv.config();
-const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL || '';
-const sendDiscord = async (content) => {
+const skeetEnv = process.env.NODE_ENV || 'development';
+const skeetGraphql = async (accessToken, endpoint, queryType, queryName, params, returnParams = ['id']) => {
     try {
-        if (DISCORD_WEBHOOK_URL === '')
-            throw new Error('DISCORD_WEBHOOK_URL is empty\nPlease set DISCORD_WEBHOOK_URL in .env');
-        const body = {
-            content,
-            username: 'Skeet Notifier',
-        };
-        const res = await (0, node_fetch_1.default)(DISCORD_WEBHOOK_URL, {
+        const body = (0, graphqlString_1.graphqlString)(queryType, queryName, params, returnParams);
+        let baseUrl = 'http://localhost:3000/graphql';
+        if (skeetEnv === 'production') {
+            baseUrl = endpoint;
+        }
+        console.log({ graphqlString: body });
+        const res = await (0, node_fetch_1.default)(baseUrl, {
             method: 'POST',
-            body: JSON.stringify(body),
-            headers: { 'Content-Type': 'application/json' },
+            body,
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${accessToken}`,
+            },
         });
-        if (res.status !== 204)
-            return false;
-        return true;
+        const result = await res.json();
+        return result;
     }
-    catch (e) {
-        console.log({ error: `Skeet sendDiscord Error - ${content}` });
-        return false;
+    catch (error) {
+        throw new Error(`skeetGraphql failed: ${error}`);
     }
 };
-exports.sendDiscord = sendDiscord;
-//# sourceMappingURL=sendDiscord.js.map
+exports.skeetGraphql = skeetGraphql;
+//# sourceMappingURL=skeetGraphql.js.map
