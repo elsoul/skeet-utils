@@ -11,7 +11,6 @@ export {
   convertToKebabCase,
   toCamelCase,
   toPascalCase,
-  toPrismaId,
   toLowerCase,
   toUpperCase,
   gravatarIconUrl,
@@ -20,11 +19,5 @@ export {
   skeetGraphql,
   graphqlString,
   QueryType,
+  getRandomInt,
 } from './lib'
-
-export {
-  connectionFromArray,
-  connectionFromPromisedArray,
-  fromGlobalId,
-  toGlobalId,
-} from 'graphql-relay'
