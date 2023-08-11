@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getRandomInt = exports.graphqlString = exports.skeetGraphql = exports.sendGet = exports.sendPost = exports.gravatarIconUrl = exports.toUpperCase = exports.toLowerCase = exports.toPascalCase = exports.toCamelCase = exports.convertToKebabCase = exports.convertFromKebabCaseToLowerCase = exports.generateIv = exports.decrypt = exports.encrypt = exports.sendDiscord = exports.decodeBase64 = exports.encodeBase64 = exports.sleep = exports.utcNow = void 0;
+exports.Logger = exports.getRandomInt = exports.graphqlString = exports.skeetGraphql = exports.sendGet = exports.sendPost = exports.gravatarIconUrl = exports.toUpperCase = exports.toLowerCase = exports.toPascalCase = exports.toCamelCase = exports.convertToKebabCase = exports.convertFromKebabCaseToLowerCase = exports.generateIv = exports.decrypt = exports.encrypt = exports.sendDiscord = exports.decodeBase64 = exports.encodeBase64 = exports.sleep = exports.utcNow = void 0;
 var lib_1 = require("./lib");
 Object.defineProperty(exports, "utcNow", { enumerable: true, get: function () { return lib_1.utcNow; } });
 Object.defineProperty(exports, "sleep", { enumerable: true, get: function () { return lib_1.sleep; } });
@@ -22,4 +22,5 @@ Object.defineProperty(exports, "sendGet", { enumerable: true, get: function () {
 Object.defineProperty(exports, "skeetGraphql", { enumerable: true, get: function () { return lib_1.skeetGraphql; } });
 Object.defineProperty(exports, "graphqlString", { enumerable: true, get: function () { return lib_1.graphqlString; } });
 Object.defineProperty(exports, "getRandomInt", { enumerable: true, get: function () { return lib_1.getRandomInt; } });
+Object.defineProperty(exports, "Logger", { enumerable: true, get: function () { return lib_1.Logger; } });
 //# sourceMappingURL=index.js.map

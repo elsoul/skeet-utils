@@ -20,4 +20,5 @@ __exportStar(require("./string"), exports);
 __exportStar(require("./discord"), exports);
 __exportStar(require("./http"), exports);
 __exportStar(require("./number"), exports);
+__exportStar(require("./logger"), exports);
 //# sourceMappingURL=index.js.map

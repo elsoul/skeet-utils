@@ -4,4 +4,5 @@ export * from './string';
 export * from './discord';
 export * from './http';
 export * from './number';
+export * from './logger';
 //# sourceMappingURL=index.js.map

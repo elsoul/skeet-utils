@@ -20,4 +20,5 @@ export {
   graphqlString,
   QueryType,
   getRandomInt,
+  Logger,
 } from './lib'
