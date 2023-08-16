@@ -30,16 +30,19 @@ exports.sendDiscord = void 0;
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
-const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL || '';
-const sendDiscord = async (content) => {
+const sendDiscord = async (content, options) => {
     try {
-        if (DISCORD_WEBHOOK_URL === '')
+        const discordOptions = {
+            webhookUrl: process.env.DISCORD_WEBHOOK_URL || options.webhookUrl,
+            username: options.username || 'Skeet Notifier',
+        };
+        if (!discordOptions.webhookUrl)
             throw new Error('DISCORD_WEBHOOK_URL is empty\nPlease set DISCORD_WEBHOOK_URL in .env');
         const body = {
             content,
-            username: 'Skeet Notifier',
+            username: discordOptions.username,
         };
-        const res = await (0, node_fetch_1.default)(DISCORD_WEBHOOK_URL, {
+        const res = await (0, node_fetch_1.default)(discordOptions.webhookUrl, {
             method: 'POST',
             body: JSON.stringify(body),
             headers: { 'Content-Type': 'application/json' },
