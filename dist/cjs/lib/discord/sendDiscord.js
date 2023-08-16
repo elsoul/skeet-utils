@@ -30,17 +30,38 @@ exports.sendDiscord = void 0;
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
+/**
+ * Sends a message to a Discord channel using a webhook.
+ *
+ * @param content - The content of the message to be sent.
+ * @param options - Configuration options for sending the message.
+ * @returns A promise that resolves to `true` if the message was sent successfully, or `false` otherwise.
+ *
+ * @example
+ * ```typescript
+ * sendDiscord('Hello from Skeet Notifier', {
+ *   webhookUrl: 'YOUR_DISCORD_WEBHOOK_URL',
+ *   username: 'CustomUsername'
+ * });
+ *
+ * // Or you can set the webhook url in .env
+ * process.env.DISCORD_WEBHOOK_URL = 'your webhook url'
+ * sendDiscord('Hello from Skeet Notifier')
+ * ```
+ * **options overrides process.env.DISCORD_WEBHOOK_URL**
+ */
 const sendDiscord = async (content, options = {
     webhookUrl: process.env.DISCORD_WEBHOOK_URL,
     username: 'Skeet Notifier',
 }) => {
     try {
         const discordOptions = {
-            webhookUrl: process.env.DISCORD_WEBHOOK_URL || options.webhookUrl,
+            webhookUrl: options.webhookUrl || process.env.DISCORD_WEBHOOK_URL,
             username: options.username || 'Skeet Notifier',
         };
-        if (!discordOptions.webhookUrl)
+        if (!discordOptions.webhookUrl) {
             throw new Error('DISCORD_WEBHOOK_URL is empty\nPlease set DISCORD_WEBHOOK_URL in .env');
+        }
         const body = {
             content,
             username: discordOptions.username,

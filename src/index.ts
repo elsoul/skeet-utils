@@ -4,6 +4,7 @@ export {
   encodeBase64,
   decodeBase64,
   sendDiscord,
+  DiscordOptions,
   encrypt,
   decrypt,
   generateIv,
