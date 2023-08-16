@@ -7,7 +7,13 @@ type DiscordOptions = {
   username?: string
 }
 
-export const sendDiscord = async (content: string, options: DiscordOptions) => {
+export const sendDiscord = async (
+  content: string,
+  options: DiscordOptions = {
+    webhookUrl: process.env.DISCORD_WEBHOOK_URL,
+    username: 'Skeet Notifier',
+  },
+) => {
   try {
     const discordOptions: DiscordOptions = {
       webhookUrl: process.env.DISCORD_WEBHOOK_URL || options.webhookUrl,

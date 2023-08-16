@@ -1,7 +1,10 @@
 import fetch from 'node-fetch';
 import * as dotenv from 'dotenv';
 dotenv.config();
-export const sendDiscord = async (content, options) => {
+export const sendDiscord = async (content, options = {
+    webhookUrl: process.env.DISCORD_WEBHOOK_URL,
+    username: 'Skeet Notifier',
+}) => {
     try {
         const discordOptions = {
             webhookUrl: process.env.DISCORD_WEBHOOK_URL || options.webhookUrl,
