@@ -1,48 +1,39 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.skeetGraphql = void 0;
 const node_fetch_1 = __importDefault(require("node-fetch"));
-const dotenv = __importStar(require("dotenv"));
-const graphqlString_1 = require("./graphqlString");
-dotenv.config();
 const skeetEnv = process.env.NODE_ENV || 'development';
-const skeetGraphql = async (accessToken, endpoint, queryType, queryName, params, returnParams = ['id']) => {
+/**
+ * Executes a GraphQL query against a given endpoint.
+ *
+ * @template T - The expected return type of the GraphQL query.
+ * @param {string} accessToken - The access token for authentication.
+ * @param {string} endpoint - The endpoint URL for the GraphQL server.
+ * @param {string} graphqlQuery - The GraphQL query to be executed.
+ * @returns {Promise<T>} - Returns a promise that resolves to the result of the GraphQL query.
+ *
+ * @throws Will throw an error if the GraphQL query fails.
+ *
+ * @example
+ * ```typescript
+ * const query = `{ user { id, name } }`;
+ * const accessToken = 'your_access_token';
+ * const endpoint = 'https://your-production-endpoint.com/graphql';
+ *
+ * const user = await skeetGraphql<UserType>(accessToken, endpoint, query)
+ * console.log(user)
+ * ```
+ */
+const skeetGraphql = async (accessToken, endpoint, graphqlQuery) => {
+    const baseUrl = skeetEnv === 'production' ? endpoint : 'http://localhost:3000/graphql';
+    console.log({ graphqlQuery });
     try {
-        const body = (0, graphqlString_1.graphqlString)(queryType, queryName, params, returnParams);
-        let baseUrl = 'http://localhost:3000/graphql';
-        if (skeetEnv === 'production') {
-            baseUrl = endpoint;
-        }
-        console.log({ graphqlString: body });
         const res = await (0, node_fetch_1.default)(baseUrl, {
             method: 'POST',
-            body,
+            body: JSON.stringify(graphqlQuery),
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${accessToken}`,

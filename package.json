@@ -1,6 +1,6 @@
 {
   "name": "@skeet-framework/utils",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Skeet Framework Plugin - Utils",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -34,15 +34,12 @@
     "dev": "npx ts-node -r tsconfig-paths/register --transpile-only src/index.ts"
   },
   "dependencies": {
-    "chalk": "5.3.0",
-    "cli-spinner": "0.2.10",
     "date-fns": "2.30.0",
     "date-fns-tz": "2.0.0",
     "dotenv": "16.3.1",
     "node-fetch": "2.6.9"
   },
   "devDependencies": {
-    "@types/cli-spinner": "0.2.1",
     "@types/jest": "29.5.3",
     "@types/node": "20.4.7",
     "@types/node-fetch": "2.6.4",

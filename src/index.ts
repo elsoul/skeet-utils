@@ -18,8 +18,18 @@ export {
   sendPost,
   sendGet,
   skeetGraphql,
-  graphqlString,
-  QueryType,
   getRandomInt,
-  Logger,
 } from './lib'
+
+export { utcToZonedTime } from 'date-fns-tz'
+export {
+  format,
+  sub,
+  subDays,
+  subHours,
+  subWeeks,
+  subMonths,
+  subMinutes,
+  subYears,
+  subSeconds,
+} from 'date-fns'
