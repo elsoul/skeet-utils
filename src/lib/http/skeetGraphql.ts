@@ -23,19 +23,20 @@ const skeetEnv = process.env.NODE_ENV || 'development'
  * console.log(user)
  * ```
  */
-export const skeetGraphql = async <T extends any>(
+export const skeetGraphql = async <T>(
   accessToken: string,
   endpoint: string,
-  graphqlQuery: string,
+  query: string,
+  variables = {} as any,
 ): Promise<T> => {
   const baseUrl =
     skeetEnv === 'production' ? endpoint : 'http://localhost:3000/graphql'
-  console.log({ graphqlQuery })
+  console.log({ query })
 
   try {
     const res = await fetch(baseUrl, {
       method: 'POST',
-      body: JSON.stringify(graphqlQuery),
+      body: JSON.stringify({ query, variables }),
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,

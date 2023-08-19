@@ -19,4 +19,4 @@
  * console.log(user)
  * ```
  */
-export declare const skeetGraphql: <T extends unknown>(accessToken: string, endpoint: string, graphqlQuery: string) => Promise<T>;
+export declare const skeetGraphql: <T>(accessToken: string, endpoint: string, query: string, variables?: any) => Promise<T>;

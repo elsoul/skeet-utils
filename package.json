@@ -1,6 +1,6 @@
 {
   "name": "@skeet-framework/utils",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Skeet Framework Plugin - Utils",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
