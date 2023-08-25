@@ -3,6 +3,7 @@ export {
   sleep,
   encodeBase64,
   decodeBase64,
+  generateRandomSalt,
   sendDiscord,
   DiscordOptions,
   encrypt,

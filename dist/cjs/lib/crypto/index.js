@@ -17,4 +17,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./base64"), exports);
 __exportStar(require("./crypto"), exports);
 __exportStar(require("./placeholder"), exports);
+__exportStar(require("./genRandomSalt"), exports);
 //# sourceMappingURL=index.js.map
