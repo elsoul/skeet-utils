@@ -17,7 +17,7 @@
 <h1>Function skeetGraphql</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="skeetGraphql"><span class="tsd-kind-call-signature">skeet<wbr/>Graphql</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">accessToken</span>, <span class="tsd-kind-parameter">endpoint</span>, <span class="tsd-kind-parameter">query</span>, <span class="tsd-kind-parameter">variables</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><a href="#skeetGraphql" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="skeetGraphql"><span class="tsd-kind-call-signature">skeet<wbr/>Graphql</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type tsd-kind-type-parameter">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">accessToken</span>, <span class="tsd-kind-parameter">endpoint</span>, <span class="tsd-kind-parameter">query</span>, <span class="tsd-kind-parameter">variables</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><a href="#skeetGraphql" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Executes a GraphQL query against a given endpoint.</p>
 </div>
@@ -27,6 +27,11 @@
 <li>
 <h4><span class="tsd-kind-type-parameter">T</span></h4>
 <div class="tsd-comment tsd-typography"><p>The expected return type of the GraphQL query.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h4><span class="tsd-kind-type-parameter">V</span></h4>
+<div class="tsd-comment tsd-typography"><p>The type of the variables used in the GraphQL query.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></li></ul></section>
 <div class="tsd-parameters">
@@ -43,9 +48,15 @@
 </div>
 <div class="tsd-comment tsd-typography"></div></li>
 <li>
-<h5><span class="tsd-kind-parameter">query</span>: <span class="tsd-signature-type">string</span></h5></li>
+<h5><span class="tsd-kind-parameter">query</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>The GraphQL query to execute.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
 <li>
-<h5><span class="tsd-kind-parameter">variables</span>: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = ...</span></h5></li></ul></div>
+<h5><span class="tsd-kind-parameter">variables</span>: <span class="tsd-signature-type tsd-kind-type-parameter">V</span><span class="tsd-signature-symbol"> = ...</span></h5>
+<div class="tsd-comment tsd-typography"><p>Optional variables to be used in the GraphQL query.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><ul>
 <li>Returns a promise that resolves to the result of the GraphQL query.</li>
 </ul>
@@ -53,11 +64,11 @@
 <div class="tsd-comment tsd-typography">
 <h4>Throws</h4><p>Will throw an error if the GraphQL query fails.</p>
 
-<h4>Example</h4><pre><code class="language-typescript"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-6">query</span><span class="hl-1"> = </span><span class="hl-2">`{ user { id, name } }`</span><span class="hl-1">;</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-6">accessToken</span><span class="hl-1"> = </span><span class="hl-2">&#39;your_access_token&#39;</span><span class="hl-1">;</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-6">endpoint</span><span class="hl-1"> = </span><span class="hl-2">&#39;https://your-production-endpoint.com/graphql&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-6">user</span><span class="hl-1"> = </span><span class="hl-7">await</span><span class="hl-1"> </span><span class="hl-0">skeetGraphql</span><span class="hl-1">&lt;</span><span class="hl-8">UserType</span><span class="hl-1">&gt;(</span><span class="hl-4">accessToken</span><span class="hl-1">, </span><span class="hl-4">endpoint</span><span class="hl-1">, </span><span class="hl-4">query</span><span class="hl-1">)</span><br/><span class="hl-4">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-4">user</span><span class="hl-1">)</span>
+<h4>Example</h4><pre><code class="language-typescript"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">query</span><span class="hl-1">: </span><span class="hl-9">CreateUserQuery</span><span class="hl-1"> = </span><span class="hl-2">`mutation { createUser(name: &quot;EpicsDAO&quot;) { id name } }}`</span><span class="hl-1">;</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">accessToken</span><span class="hl-1"> = </span><span class="hl-2">&#39;your_access_token&#39;</span><span class="hl-1">;</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">endpoint</span><span class="hl-1"> = </span><span class="hl-2">&#39;https://your-production-endpoint.com/graphql&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">user</span><span class="hl-1"> = </span><span class="hl-8">await</span><span class="hl-1"> </span><span class="hl-0">skeetGraphql</span><span class="hl-1">&lt;</span><span class="hl-9">UserType</span><span class="hl-1">, </span><span class="hl-9">CreateUserQuery</span><span class="hl-1">&gt;(</span><span class="hl-5">accessToken</span><span class="hl-1">, </span><span class="hl-5">endpoint</span><span class="hl-1">, </span><span class="hl-5">query</span><span class="hl-1">)</span><br/><span class="hl-5">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-5">user</span><span class="hl-1">)</span>
 </code><button>Copy</button></pre>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/elsoul/skeet-utils/blob/a6754d5/src/lib/http/skeetGraphql.ts#L26">src/lib/http/skeetGraphql.ts:26</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/elsoul/skeet-utils/blob/674db0e/src/lib/http/skeetGraphql.ts#L29">src/lib/http/skeetGraphql.ts:29</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

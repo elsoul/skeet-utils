@@ -19,14 +19,24 @@
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="decodeBase64"><span class="tsd-kind-call-signature">decode<wbr/>Base64</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">payload</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#decodeBase64" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Decodes a base64-encoded payload to a string.</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">payload</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
+<h5><span class="tsd-kind-parameter">payload</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>The base64-encoded data to be decoded.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><p>The decoded payload as a UTF-8 string.</p>
+
+<div class="tsd-comment tsd-typography">
+<h4>Example</h4><pre><code class="language-ts"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">encodedData</span><span class="hl-1"> = </span><span class="hl-2">&#39;SGVsbG8sIHdvcmxkIQ==&#39;</span><span class="hl-1">; </span><span class="hl-6">// Base64-encoded data</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">decodedData</span><span class="hl-1"> = </span><span class="hl-0">decodeBase64</span><span class="hl-1">(</span><span class="hl-5">encodedData</span><span class="hl-1">);</span><br/><span class="hl-5">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-5">decodedData</span><span class="hl-1">); </span><span class="hl-6">// Decoded data: &quot;Hello, world!&quot;</span>
+</code><button>Copy</button></pre>
+</div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/elsoul/skeet-utils/blob/a6754d5/src/lib/crypto/base64.ts#L5">src/lib/crypto/base64.ts:5</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/elsoul/skeet-utils/blob/674db0e/src/lib/crypto/base64.ts#L27">src/lib/crypto/base64.ts:27</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

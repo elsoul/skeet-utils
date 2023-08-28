@@ -1,3 +1,3 @@
-export declare const encrypt: (data: string, iv: string, password: string, salt: string) => string;
-export declare const decrypt: (data: string, iv: string, password: string, salt: string) => string;
-export declare const generateIv: () => string;
+export declare const algorithm = "aes-256-cbc";
+export declare const inputEncoding = "utf8";
+export declare const outputEncoding = "base64";

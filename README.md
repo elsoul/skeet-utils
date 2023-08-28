@@ -25,6 +25,15 @@
 
 Skeet Utils Plugin for Utitilies.
 
+This plugin is a collection of utilities for basic operations.
+
+- Encryption
+- String
+- Number
+- Time
+- Http
+- Notification
+
 # Installation
 
 ```bash
@@ -38,6 +47,8 @@ $ yarn add @skeet-framework/utils
 ```
 
 # Skeet Utils Docs
+
+More information can be found in the following documents.
 
 - [Skeet Utils TypeDoc](https://elsoul.github.io/skeet-utils/)
 

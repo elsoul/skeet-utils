@@ -5,6 +5,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendGet = void 0;
 const node_fetch_1 = __importDefault(require("node-fetch"));
+/**
+ * Sends a GET request to a specified URL with optional parameters and Bearer Token.
+ * Content-Type is set to application/json.
+ *
+ * @param url - The URL to send the GET request to.
+ * @param params - Optional query parameters to be appended to the URL.
+ * @param token - Optional token to be included in the Authorization header.
+ *
+ * @returns The response from the GET request.
+ *
+ * @example
+ * ```typescript
+ * const response = await sendGet('https://api.example.com/data', { q: 'searchTerm' }, 'mytoken123');
+ * const data = await response.json();
+ * console.log(data);
+ * ```
+ *
+ * @throws Will throw an error if the GET request fails.
+ */
 const sendGet = async (url, params, token) => {
     try {
         let headers = { 'Content-Type': 'application/json' };

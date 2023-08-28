@@ -1,6 +1,30 @@
 import fetch from 'node-fetch'
+import { Response as NodeFetchResponse } from 'node-fetch'
 
-export const sendGet = async (url: string, params?: any, token?: string) => {
+/**
+ * Sends a GET request to a specified URL with optional parameters and Bearer Token.
+ * Content-Type is set to application/json.
+ *
+ * @param url - The URL to send the GET request to.
+ * @param params - Optional query parameters to be appended to the URL.
+ * @param token - Optional token to be included in the Authorization header.
+ *
+ * @returns The response from the GET request.
+ *
+ * @example
+ * ```typescript
+ * const response = await sendGet('https://api.example.com/data', { q: 'searchTerm' }, 'mytoken123');
+ * const data = await response.json();
+ * console.log(data);
+ * ```
+ *
+ * @throws Will throw an error if the GET request fails.
+ */
+export const sendGet = async (
+  url: string,
+  params?: any,
+  token?: string,
+): Promise<NodeFetchResponse> => {
   try {
     let headers: RequestInit['headers'] = { 'Content-Type': 'application/json' }
     let urlWithParams = url
@@ -15,7 +39,7 @@ export const sendGet = async (url: string, params?: any, token?: string) => {
       method: 'GET',
       headers,
     })
-    return res
+    return res as NodeFetchResponse
   } catch (e) {
     console.log({ e })
     throw new Error('sendGET failed')
