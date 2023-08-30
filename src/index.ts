@@ -21,7 +21,7 @@ export {
   skeetGraphql,
   getRandomInt,
 } from './lib'
-
+export * as dotenv from 'dotenv'
 export { utcToZonedTime } from 'date-fns-tz'
 export {
   format,
