@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.subSeconds = exports.subYears = exports.subMinutes = exports.subMonths = exports.subWeeks = exports.subHours = exports.subDays = exports.sub = exports.format = exports.utcToZonedTime = exports.dotenv = exports.getRandomInt = exports.skeetGraphql = exports.sendGet = exports.sendPost = exports.gravatarIconUrl = exports.toUpperCase = exports.toLowerCase = exports.toPascalCase = exports.toCamelCase = exports.convertToKebabCase = exports.convertFromKebabCaseToLowerCase = exports.generateIv = exports.decrypt = exports.encrypt = exports.sendDiscord = exports.generateRandomSalt = exports.decodeBase64 = exports.encodeBase64 = exports.sleep = exports.utcNow = void 0;
+exports.subSeconds = exports.subYears = exports.subMinutes = exports.subMonths = exports.subWeeks = exports.subHours = exports.subDays = exports.sub = exports.format = exports.utcToZonedTime = exports.dotenv = exports.addLeadingZero = exports.getRandomInt = exports.skeetGraphql = exports.sendGet = exports.sendPost = exports.gravatarIconUrl = exports.toUpperCase = exports.toLowerCase = exports.toPascalCase = exports.toCamelCase = exports.convertToKebabCase = exports.convertFromKebabCaseToLowerCase = exports.generateIv = exports.decrypt = exports.encrypt = exports.sendDiscord = exports.generateRandomSalt = exports.decodeBase64 = exports.encodeBase64 = exports.sleep = exports.utcNow = void 0;
 var lib_1 = require("./lib");
 Object.defineProperty(exports, "utcNow", { enumerable: true, get: function () { return lib_1.utcNow; } });
 Object.defineProperty(exports, "sleep", { enumerable: true, get: function () { return lib_1.sleep; } });
@@ -45,6 +45,7 @@ Object.defineProperty(exports, "sendPost", { enumerable: true, get: function () 
 Object.defineProperty(exports, "sendGet", { enumerable: true, get: function () { return lib_1.sendGet; } });
 Object.defineProperty(exports, "skeetGraphql", { enumerable: true, get: function () { return lib_1.skeetGraphql; } });
 Object.defineProperty(exports, "getRandomInt", { enumerable: true, get: function () { return lib_1.getRandomInt; } });
+Object.defineProperty(exports, "addLeadingZero", { enumerable: true, get: function () { return lib_1.addLeadingZero; } });
 exports.dotenv = __importStar(require("dotenv"));
 var date_fns_tz_1 = require("date-fns-tz");
 Object.defineProperty(exports, "utcToZonedTime", { enumerable: true, get: function () { return date_fns_tz_1.utcToZonedTime; } });
