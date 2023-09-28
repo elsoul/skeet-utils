@@ -17,11 +17,41 @@ const skeetEnv = process.env.NODE_ENV || 'development'
  *
  * @example
  * ```typescript
- * const query: CreateUserQuery = `mutation { createUser(name: "EpicsDAO") { id name } }}`;
- * const accessToken = 'your_access_token';
- * const endpoint = 'https://your-production-endpoint.com/graphql';
+ * const query: CreateUserQuery = `mutation Mutation(
+ * $uid: String
+ * $username: String
+ * $email: String
+ * $iconUrl: String
+ * ) {
+ * createUser(uid: $uid, username: $username, email: $email, iconUrl: $iconUrl) {
+ *  id
+ *  rawId
+ *  uid
+ *  username
+ *  email
+ *  iconUrl
+ *  role
+ *  iv
+ *  createdAt
+ *  updatedAt
+ *  }
+ * }`
+ * const accessToken = 'your_access_token'
+ * const variables: CreateUserParams = {
+ *  uid: 'your_uid',
+ *  username: 'your_username',
+ *  email: 'your_email',
+ *  iconUrl: 'your_icon_url',
+ * }
  *
- * const user = await skeetGraphql<UserType, CreateUserQuery>(accessToken, endpoint, query)
+ *
+ *
+ *
+ *
+ *
+ * const endpoint = 'https://your-production-endpoint.com/graphql'
+ *
+ * const user = await skeetGraphql<UserType, CreateUserParams>(accessToken, endpoint, query, variables)
  * console.log(user)
  * ```
  */

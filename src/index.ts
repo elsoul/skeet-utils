@@ -20,6 +20,7 @@ export {
   sendGet,
   skeetGraphql,
   getRandomInt,
+  addLeadingZero,
 } from './lib'
 export * as dotenv from 'dotenv'
 export { utcToZonedTime } from 'date-fns-tz'
