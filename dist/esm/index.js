@@ -1,5 +1,5 @@
 export { utcNow, sleep, encodeBase64, decodeBase64, generateRandomSalt, sendDiscord, encrypt, decrypt, generateIv, convertFromKebabCaseToLowerCase, convertToKebabCase, toCamelCase, toPascalCase, toLowerCase, toUpperCase, gravatarIconUrl, sendPost, sendGet, skeetGraphql, getRandomInt, addLeadingZero, } from './lib';
 export * as dotenv from 'dotenv';
 export { utcToZonedTime } from 'date-fns-tz';
-export { format, sub, subDays, subHours, subWeeks, subMonths, subMinutes, subYears, subSeconds, } from 'date-fns';
+export { format, sub, subDays, subHours, subWeeks, subMonths, subMinutes, subYears, subSeconds, add, addDays, addHours, addWeeks, addMonths, addMinutes, addYears, addSeconds, differenceInDays, differenceInHours, differenceInWeeks, differenceInMonths, differenceInMinutes, differenceInYears, differenceInSeconds, differenceInMilliseconds, differenceInCalendarDays, differenceInCalendarISOWeeks, differenceInCalendarMonths, differenceInCalendarWeeks, differenceInCalendarYears, differenceInCalendarQuarters, differenceInCalendarISOWeekYears, differenceInQuarters, differenceInISOWeekYears, } from 'date-fns';
 //# sourceMappingURL=index.js.map
