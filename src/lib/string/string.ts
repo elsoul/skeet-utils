@@ -80,7 +80,7 @@ export const toCamelCase = (str: string): string => {
  * const upperCaseString = await toUpperCase(inputString);
  * console.log(upperCaseString); // "Hello"
  */
-export const toUpperCase = async (str: string): Promise<string> => {
+export const toUpperCase = (str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
@@ -95,6 +95,6 @@ export const toUpperCase = async (str: string): Promise<string> => {
  * const lowerCaseString = await toLowerCase(inputString);
  * console.log(lowerCaseString); // "world"
  */
-export const toLowerCase = async (str: string): Promise<string> => {
+export const toLowerCase = (str: string): string => {
   return str.charAt(0).toLowerCase() + str.slice(1)
 }
