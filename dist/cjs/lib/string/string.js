@@ -83,7 +83,7 @@ exports.toCamelCase = toCamelCase;
  * const upperCaseString = await toUpperCase(inputString);
  * console.log(upperCaseString); // "Hello"
  */
-const toUpperCase = async (str) => {
+const toUpperCase = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
 };
 exports.toUpperCase = toUpperCase;
@@ -98,7 +98,7 @@ exports.toUpperCase = toUpperCase;
  * const lowerCaseString = await toLowerCase(inputString);
  * console.log(lowerCaseString); // "world"
  */
-const toLowerCase = async (str) => {
+const toLowerCase = (str) => {
     return str.charAt(0).toLowerCase() + str.slice(1);
 };
 exports.toLowerCase = toLowerCase;

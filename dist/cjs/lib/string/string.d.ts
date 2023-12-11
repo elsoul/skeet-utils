@@ -57,7 +57,7 @@ export declare const toCamelCase: (str: string) => string;
  * const upperCaseString = await toUpperCase(inputString);
  * console.log(upperCaseString); // "Hello"
  */
-export declare const toUpperCase: (str: string) => Promise<string>;
+export declare const toUpperCase: (str: string) => string;
 /**
  * Converts the first character of a string to lower case.
  *
@@ -69,4 +69,4 @@ export declare const toUpperCase: (str: string) => Promise<string>;
  * const lowerCaseString = await toLowerCase(inputString);
  * console.log(lowerCaseString); // "world"
  */
-export declare const toLowerCase: (str: string) => Promise<string>;
+export declare const toLowerCase: (str: string) => string;

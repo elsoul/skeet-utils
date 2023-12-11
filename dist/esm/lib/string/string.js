@@ -76,7 +76,7 @@ export const toCamelCase = (str) => {
  * const upperCaseString = await toUpperCase(inputString);
  * console.log(upperCaseString); // "Hello"
  */
-export const toUpperCase = async (str) => {
+export const toUpperCase = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
 };
 /**
@@ -90,7 +90,7 @@ export const toUpperCase = async (str) => {
  * const lowerCaseString = await toLowerCase(inputString);
  * console.log(lowerCaseString); // "world"
  */
-export const toLowerCase = async (str) => {
+export const toLowerCase = (str) => {
     return str.charAt(0).toLowerCase() + str.slice(1);
 };
 //# sourceMappingURL=string.js.map
